@@ -1,0 +1,74 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+  margin: 10px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+}
+ 
+.container {
+  width: 900px;
+}
+ 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ 
+.title {
+  color: #673ab7;
+  font-size: 30px;
+  font-weight: 600;
+}
+.user-card {
+  margin: auto;
+  padding: 20px;
+}
+ 
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+ 
+.full-width-table {
+  width: 100%;
+}
+/* Reduce mat-form-field height by removing extra spacing */
+.search-field {
+  width: 300px;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-bottom-align::before {
+  display: none !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-text-field-wrapper {
+  height: 50px !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-infix {
+  min-height: 20px !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-hint-wrapper,
+.search-field ::ng-deep .mat-mdc-form-field-error-wrapper {
+  display: none !important;
+}
+ 
+.search-field ::ng-deep .mdc-notched-outline__leading,
+.search-field ::ng-deep .mdc-notched-outline__notch,
+.search-field ::ng-deep .mdc-notched-outline__trailing {
+  height: 50px !important;
+}

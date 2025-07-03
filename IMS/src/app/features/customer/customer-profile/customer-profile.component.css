@@ -1,0 +1,526 @@
+.customer-profile-container {
+  width: 130%; /* Reduced width for a more compact look */
+  max-width: 900px; /* Adjusted max-width */
+  margin: 30px auto; /* Slightly increased top/bottom margin for breathing room */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px; /* Reduced padding */
+  background-color: #e3f2fd;
+  border-bottom: 1px solid #bbdefb;
+  color: #1976d2;
+  font-weight: 500;
+}
+
+.header-title {
+  font-size: 1.8em; /* Slightly smaller font size */
+  font-weight: 700;
+  margin: 0;
+  color: #1976d2;
+}
+
+.profile-display-section,
+.profile-edit-section {
+  padding: 20px; /* Reduced padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Removed .profile-avatar as per request for display section */
+/* Removed .avatar-image as per request for display section */
+
+.profile-details {
+  width: 100%;
+  max-width: 500px; /* Smaller max-width for details */
+  margin-bottom: 15px; /* Reduced margin */
+}
+
+.detail-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0; /* Reduced padding */
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.detail-group:last-of-type {
+  border-bottom: none;
+}
+
+.detail-label-wrapper {
+  flex-shrink: 0;
+  margin-right: 15px; /* Reduced margin */
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 1em; /* Slightly smaller font size */
+}
+
+.detail-value-wrapper {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.detail-value {
+  color: #333;
+  line-height: 1.5;
+  word-break: break-word;
+  font-size: 1em; /* Slightly smaller font size */
+}
+
+.detail-group-address {
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.detail-group-address .detail-label-wrapper {
+  margin-bottom: 6px; /* Reduced margin */
+  margin-right: 0;
+}
+
+.detail-group-address .detail-value-wrapper {
+  text-align: left;
+  width: 100%;
+}
+
+/* Removed .details-divider as it was part of the original display structure */
+
+.edit-profile-button {
+  padding: 12px 25px; /* Smaller padding */
+  font-size: 1em; /* Smaller font size */
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.edit-profile-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
+}
+
+.edit-profile-button mat-icon {
+  margin-right: 8px; /* Reduced margin */
+}
+
+.edit-section-title {
+  color: #333;
+  margin-bottom: 25px; /* Reduced margin */
+  text-align: center;
+  font-size: 1.6em; /* Smaller font size */
+  font-weight: 600;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px; /* Smaller max-width for the form */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mat-form-field {
+  margin-bottom: 18px; /* Reduced margin */
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Reduced gap */
+  margin-top: 20px; /* Reduced margin */
+}
+
+.save-button {
+  padding: 12px 25px; /* Smaller padding */
+  font-size: 1em; /* Smaller font size */
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
+}
+
+.save-button mat-icon {
+  margin-right: 8px; /* Reduced margin */
+}
+
+.cancel-button {
+  padding: 12px 25px; /* Smaller padding */
+  font-size: 1em; /* Smaller font size */
+  font-weight: 600;
+  border-radius: 8px;
+  color: #6c757d;
+  background-color: #f0f0f0;
+  transition: all 0.2s ease-in-out;
+}
+
+.cancel-button:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/* Styles for profile image upload */
+.profile-image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px; /* Adds space below the image upload area */
+}
+
+.upload-preview-image {
+  width: 120px; /* Slightly larger for better preview */
+  height: 120px; /* Slightly larger for better preview */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px; /* Space between image and button */
+}
+
+.upload-button {
+  padding: 8px 15px; /* Adjusted padding */
+  font-size: 0.9em; /* Smaller font for the button */
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.upload-button mat-icon {
+  margin-right: 8px; /* Adjusted icon margin */
+  font-size: 18px; /* Smaller icon size */
+}
+
+@media (max-width: 768px) {
+  .customer-profile-container {
+    width: 95%;
+    margin: 20px auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-header,
+  .profile-display-section,
+  .profile-edit-section {
+    padding: 18px; /* Slightly reduced padding */
+  }
+
+  .header-title {
+    font-size: 1.5em; /* Smaller font size */
+  }
+
+  .profile-avatar {
+    width: 90px; /* Even smaller avatar on mobile */
+    height: 90px;
+    margin-bottom: 20px;
+  }
+
+  .detail-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px; /* Reduced gap */
+    padding: 8px 0; /* Reduced padding */
+  }
+
+  .detail-label-wrapper {
+    margin-right: 0;
+  }
+
+  .detail-value-wrapper {
+    text-align: left;
+    width: 100%;
+  }
+
+  .edit-profile-button,
+  .save-button,
+  .cancel-button {
+    font-size: 0.95em; /* Slightly smaller font */
+    padding: 10px 20px; /* Slightly smaller padding */
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px; /* Reduced gap */
+  }
+
+  /* Mobile specific styles for image upload */
+  .upload-preview-image {
+    width: 100px; /* Smaller preview image on mobile */
+    height: 100px;
+    margin-bottom: 12px;
+  }
+
+  .upload-button {
+    font-size: 0.85em;
+    padding: 7px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Reduced gap */
+    padding: 12px; /* Reduced padding */
+  }
+
+  .header-title {
+    font-size: 1.3em; /* Smaller font size */
+  }
+
+  .profile-avatar {
+    width: 70px; /* Smallest avatar on very small screens */
+    height: 70px;
+    margin-bottom: 15px;
+  }
+
+  .edit-section-title {
+    font-size: 1.4em; /* Smaller font size */
+    margin-bottom: 20px;
+  }
+
+  .mat-form-field {
+    margin-bottom: 15px; /* Reduced margin */
+  }
+
+  .save-button,
+  .cancel-button {
+    width: 100%;
+    font-size: 0.9em;
+    padding: 10px 15px;
+  }
+
+  /* Very small screen adjustments for image upload */
+  .upload-preview-image {
+    width: 80px;
+    height: 80px;
+  }
+  .upload-button {
+    font-size: 0.8em;
+    padding: 6px 10px;
+  }
+  /* Container for the edit section */
+.profile-edit-section {
+  padding: 40px 25px; /* Increased padding for more breathing room */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8fafd; /* Very light blue-grey background */
+  border-radius: 12px; /* Inherit border-radius from parent container if applicable */
+}
+
+/* Title styling for the edit form */
+.edit-section-title {
+  color: #2c3e50; /* Darker, more professional text color */
+  margin-bottom: 35px; /* More space below the title */
+  text-align: center;
+  font-size: 2.2em; /* Prominent title size */
+  font-weight: 700;
+  letter-spacing: -0.5px; /* Slightly tighter letter spacing */
+  position: relative; /* For the underline effect */
+  padding-bottom: 10px;
+}
+
+.edit-section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px; /* Short underline effect */
+  height: 4px;
+  background-color: #1976d2; /* Primary blue color */
+  border-radius: 2px;
+}
+
+/* Styling for the form itself */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Take full available width */
+  max-width: 600px; /* Control max width for better readability */
+  gap: 20px; /* Increased space between form fields */
+}
+
+/* Make Material form fields take full width within the form */
+.mat-form-field.full-width-input {
+  width: 100%;
+}
+
+/* General styling for Material input fields */
+.mat-form-field .mat-form-field-wrapper {
+  padding-bottom: 0; /* Remove default Material padding that can add extra space */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  padding: 0.75em 1em 0; /* Adjust padding inside the outline for a compact look */
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #b0bec5; /* Lighter grey for the outline */
+}
+
+/* Hover and focus states for outline inputs */
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #1976d2; /* Primary color on focus */
+}
+
+.mat-form-field-appearance-outline:hover .mat-form-field-outline {
+  color: #78909c; /* Slightly darker grey on hover */
+}
+
+/* Adjustments for mat-label (the floating label) */
+.mat-form-field-label {
+  color: #607d8b; /* Softer color for labels */
+  font-weight: 500;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #1976d2; /* Primary color when focused */
+}
+
+/* Styling for error messages */
+.mat-error {
+  font-size: 0.85em;
+  color: #d32f2f; /* Standard Material error red */
+  margin-top: 5px; /* Space above error message */
+}
+
+/* Action buttons container */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Generous space between buttons */
+  margin-top: 40px; /* More space above the buttons */
+}
+
+/* Base button styles */
+.save-button,
+.cancel-button {
+  padding: 15px 35px; /* Larger buttons */
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 25px; /* Pill-shaped buttons */
+  text-transform: uppercase; /* Uppercase text for buttons */
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* Specific styles for Save Changes button */
+.save-button {
+  background-color: #1976d2; /* Primary blue */
+  color: #ffffff;
+  border: none;
+}
+
+.save-button:hover:not([disabled]) {
+  background-color: #1565c0; /* Darker blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.3);
+}
+
+.save-button:disabled {
+  background-color: #bbdefb; /* Lighter blue when disabled */
+  color: #90caf9;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.save-button mat-icon {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Specific styles for Cancel button */
+.cancel-button {
+  background-color: #eceff1; /* Light grey for cancel */
+  color: #546e7a; /* Darker grey text */
+  border: 1px solid #cfd8dc;
+}
+
+.cancel-button:hover {
+  background-color: #cfd8dc; /* Slightly darker grey on hover */
+  color: #37474f;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+@media (max-width: 768px) {
+  .profile-edit-section {
+    padding: 30px 15px;
+  }
+
+  .edit-section-title {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+
+  .profile-form {
+    max-width: 100%;
+    gap: 15px;
+  }
+
+  .save-button,
+  .cancel-button {
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px;
+    width: 100%;
+  }
+
+  .save-button,
+  .cancel-button {
+    width: 100%; /* Make buttons take full width when stacked */
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-edit-section {
+    padding: 20px 10px;
+  }
+
+  .edit-section-title {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  .edit-section-title::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .save-button,
+  .cancel-button {
+    font-size: 0.9em;
+    padding: 10px 20px;
+  }
+}
+}
+
+

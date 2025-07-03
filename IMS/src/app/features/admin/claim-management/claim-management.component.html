@@ -1,0 +1,104 @@
+
+<div class="container">
+  <div class="header">
+    <h1 class="all-claims">All Claims</h1>
+    <mat-form-field appearance="outline" class="search-field" subscriptSizing="dynamic">
+      <mat-label>Search Claims by Status</mat-label>
+      <input
+        matInput
+        placeholder="e.g., Pending, Approved, Rejected"
+        (input)="applyFilter($event)"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+ 
+  <mat-card class="claims-card">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z4 cell" matSort>
+ 
+      <!-- Serial No. -->
+      <ng-container matColumnDef="sno">
+        <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+        <mat-cell *matCellDef="let policy; let i = index">
+          {{ (paginator.pageIndex || 0) * (paginator.pageSize || 10) + i + 1 }}
+        </mat-cell>
+      </ng-container>
+ 
+      <!-- Claim ID -->
+      <ng-container matColumnDef="claimId">
+        <mat-header-cell *matHeaderCellDef>Claim ID</mat-header-cell>
+        <mat-cell *matCellDef="let claim"> {{ claim.claimId }} </mat-cell>
+      </ng-container>
+ 
+      <!-- Policy Name -->
+      <ng-container matColumnDef="policyName">
+        <mat-header-cell *matHeaderCellDef>Policy Name</mat-header-cell>
+        <mat-cell *matCellDef="let claim"> {{ claim.policyName }} </mat-cell>
+      </ng-container>
+ 
+      <!-- Claim Amount -->
+      <ng-container matColumnDef="claimAmount">
+        <mat-header-cell *matHeaderCellDef>Claim Amount</mat-header-cell>
+        <mat-cell *matCellDef="let claim"> ₹{{ claim.claimAmount }} </mat-cell>
+      </ng-container>
+ 
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell *matCellDef="let claim">
+          <span [ngClass]="getStatusClass(claim.status)">
+            {{ claim.status }}
+          </span>
+        </mat-cell>
+      </ng-container>
+ 
+      <!-- Customer Name -->
+      <ng-container matColumnDef="customerName">
+        <mat-header-cell *matHeaderCellDef>Customer Name</mat-header-cell>
+        <mat-cell *matCellDef="let claim"> {{ claim.customerName }} </mat-cell>
+      </ng-container>
+ 
+      <!-- Agent Name -->
+      <ng-container matColumnDef="agentName">
+        <mat-header-cell *matHeaderCellDef>Agent Name</mat-header-cell>
+        <mat-cell *matCellDef="let claim"> {{ claim.agentName }} </mat-cell>
+      </ng-container>
+ 
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let claim">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="updateStatus(claim, 'Approved')"
+            [disabled]="claim.status === 'Approved' || claim.status === 'Rejected'"
+          >
+            Approve
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="updateStatus(claim, 'Rejected')"
+            [disabled]="claim.status === 'Approved' || claim.status === 'Rejected'"
+          >
+            Reject
+          </button>
+        </mat-cell>
+      </ng-container>
+ 
+      <!-- Header and Row Rendering -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+ 
+    <!-- Paginator (no more (page) binding needed) -->
+    <mat-paginator
+      [length]="totalClaims"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 15]"
+      aria-label="Select page of claims"
+    >
+    </mat-paginator>
+  </mat-card>
+</div>

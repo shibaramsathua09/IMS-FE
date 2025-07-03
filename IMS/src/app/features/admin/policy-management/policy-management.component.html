@@ -1,0 +1,14 @@
+<div class="policy-management-container">
+  <div class="policy-nav-links">
+    <a mat-button routerLink="/admin/policy-management/view-all-policies" routerLinkActive="active-button">
+      <mat-icon>visibility</mat-icon> View All Policies
+    </a>
+    <a mat-button routerLink="/admin/policy-management/requested-policies" routerLinkActive="active-button">
+      <mat-icon>request_quote</mat-icon> Policy Requests
+    </a>
+  </div>
+ 
+  <div class="policy-content-area">
+    <router-outlet></router-outlet>
+  </div>
+</div>

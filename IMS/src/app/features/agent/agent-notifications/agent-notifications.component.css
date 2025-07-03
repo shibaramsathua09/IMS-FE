@@ -1,0 +1,304 @@
+.notification-dashboard {
+  max-width: 900px;
+  margin: 32px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+ 
+.notification-toolbar {
+  height: 64px;
+  background-color: #673ab7;
+  color: white;
+  padding: 0 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+ 
+.notification-toolbar .header-icon {
+  font-size: 30px;
+  margin-right: 16px;
+  position: relative;
+}
+ 
+.notification-toolbar .header-icon ::ng-deep .mat-badge-content {
+  background-color: #ffd740 !important;
+  color: #333 !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  line-height: 20px !important;
+  top: 5px !important;
+  right: 5px !important;
+  border-radius: 10px !important;
+  padding: 0 4px;
+}
+ 
+.notification-toolbar .header-title {
+  font-size: 1.5em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+ 
+.notification-toolbar .toolbar-spacer {
+  flex: 1 1 auto;
+}
+ 
+.notification-toolbar .mark-all-read-button {
+  background-color: #ffd740;
+  color: #673ab7;
+  font-weight: 500;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+ 
+.notification-toolbar .mark-all-read-button:hover:not([disabled]) {
+  background-color: #ffe680;
+}
+ 
+.notification-toolbar .mark-all-read-button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.38);
+}
+ 
+.notification-toolbar .mark-all-read-button mat-icon {
+  margin-right: 8px;
+}
+ 
+.notification-list-container {
+  padding: 16px 0;
+  flex-grow: 1;
+  min-height: 450px;
+ 
+}
+ 
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px 24px;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, height 0.3s ease-out;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 5px;
+  height: auto;
+  min-height: 64px;
+}
+ 
+.notification-item:hover {
+  background-color: #f5f5f5;
+}
+ 
+.notification-item.unread {
+  background-color: #e3f2fd;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+ 
+.notification-item.unread::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: #673ab7;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+ 
+ 
+.notification-item.unread .notification-content .notification-message {
+  color: #333;
+}
+ 
+.notification-item.unread .notification-content .notification-timestamp {
+  color: #555;
+}
+ 
+.notification-item.read {
+  background-color: #ffffff;
+  color: #666;
+}
+ 
+.notification-item.read .notification-content .notification-message {
+  color: #666;
+  font-weight: 400;
+}
+ 
+.notification-item.read .notification-content .notification-timestamp {
+  color: #999;
+}
+ 
+.notification-item.read .read-toggle-button {
+  color: #999;
+}
+ 
+.notification-item .notification-type-indicator {
+  min-width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+ 
+.notification-item .notification-type-indicator.type-success { background-color: #4caf50; }
+.notification-item .notification-type-indicator.type-warning { background-color: #ff9800; }
+.notification-item .notification-type-indicator.type-info { background-color: #2196f3; }
+.notification-item .notification-type-indicator.type-error { background-color: #f44336; }
+.notification-item .notification-type-indicator.type-new { background-color: #00bcd4; }
+ 
+.notification-item .notification-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+  min-height: 0;
+  overflow: visible;
+  flex-shrink: 1;
+}
+ 
+.notification-item .notification-content .notification-message {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+  max-height: 1.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  transition: max-height 0.3s ease-out, white-space 0.3s ease-out, text-overflow 0.3s ease-out;
+}
+ 
+.notification-item:has(.expand-toggle-checkbox:checked) .notification-content .notification-message {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  max-height: 500px;
+  cursor: default;
+}
+ 
+.expand-toggle-checkbox {
+  display: none;
+}
+ 
+.notification-item .expand-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+ 
+.notification-item .notification-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+ 
+.notification-item .notification-content .notification-timestamp {
+  font-size: 13px;
+  color: #888;
+}
+ 
+.notification-item .notification-content .message-read {
+  font-weight: 400;
+}
+ 
+.notification-item .notification-actions .read-toggle-button,
+.notification-item .notification-actions .delete-button {
+  color: #757575;
+  transition: color 0.2s ease-in-out;
+}
+ 
+.notification-item .notification-actions .read-toggle-button:hover,
+.notification-item .notification-actions .delete-button:hover {
+  color: #333;
+}
+ 
+.notification-item .notification-actions .delete-button {
+  color: #999;
+}
+ 
+.notification-item .notification-actions .delete-button:hover {
+  color: #f44336;
+}
+ 
+.mat-divider {
+  border-top-color: #eee;
+}
+ 
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+ 
+.empty-state .empty-icon {
+  font-size: 80px;
+  width: 80px;
+  height: 80px;
+  color: #bdbdbd;
+  margin-bottom: 24px;
+}
+ 
+.empty-state .empty-message {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+ 
+.empty-state .empty-sub-message {
+  font-size: 1em;
+  margin-bottom: 24px;
+  color: #999;
+}
+ 
+.empty-state .refresh-button {
+  background-color: #2196f3;
+  color: white;
+  font-weight: 500;
+  padding: 0 24px;
+  height: 44px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+ 
+.empty-state .refresh-button:hover {
+  background-color: #64b5f6;
+}
+ 
+.empty-state .refresh-button mat-icon {
+  margin-right: 8px;
+}
+ 
+body ::ng-deep .mat-badge-content {
+  font-family: 'Roboto', sans-serif;
+}

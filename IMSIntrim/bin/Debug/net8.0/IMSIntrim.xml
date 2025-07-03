@@ -1,0 +1,716 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InsurenceManagementSystemWebApi</name>
+    </assembly>
+    <members>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAllCustomers(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of all customer profiles. Accessible only to users with the Admin role.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of customer profiles per page. Defaults to 10.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing a <see cref="T:InsurenceManagementSystemWebApi.Applications.DTOs.PagedResult`1"/>.
+            Returns 200 OK with the paginated customer data if successful, or 404 Not Found if no customers are found or the operation fails.
+            </returns>
+            <remarks>
+            This endpoint is restricted to users with the Admin role. It is used to fetch customer profile data in a paginated format.
+            The response includes metadata such as total count, current page, and page size.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAllAgents(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of all agents. Accessible only by users with the Admin role.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of agents per page. Defaults to 10.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the result of the operation.
+            If successful, returns an HTTP 200 OK response with the list of agents.
+            If the operation fails, returns an HTTP 404 Not Found response with the error details.
+            </returns>
+            <remarks>
+            This endpoint is protected and requires the user to have the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAllAvailablePolicies(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of all available insurance policies.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of items per page. Defaults to 10.</param>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing a <see cref="T:InsurenceManagementSystemWebApi.Applications.DTOs.PagedResult`1"/> with the available policies.
+            Returns 200 OK with the paged result if successful, or 404 Not Found if no policies are found.
+            </returns>
+            <remarks>
+            Returns 200 OK with the paged result if successful, or 404 Not Found if no policies are found.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAllPolicyRequests(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of all policy requests.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of items per page. Defaults to 10.</param>
+            <returns>
+            A paginated list of <see cref="T:InsurenceManagementSystemWebApi.Applications.DTOs.PolicyRequestStatusResponseDto"/> wrapped in an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/>.
+            </returns>
+            <response code="200">Returns the list of policy requests.</response>
+            <response code="404">Returned when no policy requests are found or the operation fails.</response>
+            <remarks>
+            This endpoint is restricted to users with the Admin role. It supports pagination through the <c>page</c> and <c>size</c> query parameters.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAllClaims(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of claims.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of claims per page. Defaults to 10.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing a paginated list of claims.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the claims.
+            If no claims are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.AddAvailablePolicy(InsurenceManagementSystemWebApi.Applications.DTOs.AvailablePolicyRequestDto)">
+            <summary>
+            Adds a new available policy.
+            </summary>
+            <param name="dto">The policy details to be added.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.UpdateAvailablePolicy(InsurenceManagementSystemWebApi.Applications.DTOs.AvailablePolicyRequestDto,System.Int32)">
+            <summary>
+            Updates an existing available policy.
+            </summary>
+            <param name="dto">The updated policy details.</param>
+            <param name="policyId">The ID of the policy to update.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the update operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.DeleteAvailablePolicy(System.Int32)">
+            <summary>
+            Deletes an available policy by its ID.
+            </summary>
+            <param name="id">The unique identifier of the policy to delete.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the delete operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.ApprovePolicyRequest(InsurenceManagementSystemWebApi.Applications.DTOs.AssignAgentRequestDto,System.Int32)">
+            <summary>
+            Approves a policy request by assigning an agent.
+            </summary>
+            <param name="dto">The agent assignment details.</param>
+            <param name="requestId">The unique identifier of the policy request to approve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the approval operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.RejectPolicyRequest(System.Int32)">
+            <summary>
+            Rejects a policy request.
+            </summary>
+            <param name="requestId">The unique identifier of the policy request to reject.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the rejection operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.ApproveClaim(System.Int32)">
+            <summary>
+            Approves an insurance claim.
+            </summary>
+            <param name="claimId">The unique identifier of the claim to approve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the approval operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.RejectClaim(System.Int32)">
+            <summary>
+            Rejects an insurance claim.
+            </summary>
+            <param name="claimId">The unique identifier of the claim to reject.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the rejection operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAllUsers">
+            <summary>
+            Retrieves a list of all users with their roles.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing a list of users with their roles.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of users.
+            If no users are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.AddCustomer(InsurenceManagementSystemWebApi.Applications.DTOs.CustomerRegisterRequestDto)">
+            <summary>
+            Adds a new customer to the system.
+            </summary>
+            <param name="dto">The customer registration details.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.AddAgent(InsurenceManagementSystemWebApi.Applications.DTOs.AgentRegisterRequestDto)">
+            <summary>
+            Adds a new agent to the system.
+            </summary>
+            <param name="dto">The agent registration details.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the operation result.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAvailablePolicyByIdAsync(System.Int32)">
+            <summary>
+            Retrieves an available policy by its unique ID.
+            </summary>
+            <param name="policyId">The unique identifier of the policy to retrieve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing the policy details.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the policy information.
+            If the policy is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint fetches the policy details based on the given policy ID.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetCustomerByIdAsync(System.Int32)">
+            <summary>
+            Retrieves customer profile details by their unique ID.
+            </summary>
+            <param name="customerId">The unique identifier of the customer to retrieve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing the customer profile details.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the customer information.
+            If the customer is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetAgentByIdAsync(System.Int32)">
+            <summary>
+            Retrieves an agent's profile details by their unique ID.
+            </summary>
+            <param name="agentId">The unique identifier of the agent to retrieve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing the agent profile details.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the agent information.
+            If the agent is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AdminController.GetMyClaims(System.Int32)">
+            <summary>
+            Retrieves all claims associated with a specific customer ID.
+            </summary>
+            <param name="customerId">The unique identifier of the customer whose claims are being retrieved.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the list of claims.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the claims.
+            If no claims are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Admin role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.GetProfile">
+            <summary>
+            Retrieves the profile details of the currently authenticated agent.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the agent's profile details.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the profile information.
+            If the profile is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/> with an error message.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.UpdateProfile(InsurenceManagementSystemWebApi.Applications.DTOs.AgentProfileUpdateRequestDto)">
+            <summary>
+            Updates the profile details of the currently authenticated agent.
+            </summary>
+            <param name="updateAgentProfileDto">The updated profile details.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the update operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the updated profile.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.GetAssignedPolicies">
+            <summary>
+            Retrieves the list of policies assigned to the currently authenticated agent.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the assigned policies.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of assigned policies.
+            If no policies are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.GetFiledClaims">
+            <summary>
+            Retrieves the list of claims filed by the currently authenticated agent.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the filed claims.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of filed claims.
+            If no claims are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.FileClaim(InsurenceManagementSystemWebApi.Applications.DTOs.ClaimFilingRequestDtoForAgent)">
+            <summary>
+            Allows an agent to file an insurance claim.
+            </summary>
+            <param name="dto">The claim filing details provided by the agent.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the claim filing.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the claim filing response.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.GetMyNotifications">
+            <summary>
+            Retrieves the list of notifications for the currently authenticated agent.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the agent's notifications.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of notifications.
+            If no notifications are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.GetAllAvailablePolicies(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of available policies.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of policies per page. Defaults to 10.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing a paginated list of available policies.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the policies.
+            If no policies are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AgentController.GetAvailablePolicyByIdAsync(System.Int32)">
+            <summary>
+            Retrieves an available policy by its unique ID.
+            </summary>
+            <param name="policyId">The unique identifier of the policy to retrieve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing the policy details.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the policy information.
+            If the policy is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Agent role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AuthController.Register(InsurenceManagementSystemWebApi.Applications.DTOs.CustomerRegisterRequestDto)">
+            <summary>
+            Registers a new customer in the system.
+            </summary>
+            <param name="request">The customer registration details.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the registration process.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the registration response.
+            If the request is null or invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint facilitates customer registration.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AuthController.Login(InsurenceManagementSystemWebApi.Applications.DTOs.LoginRequestDto)">
+            <summary>
+            Authenticates a user and generates an access token upon successful login.
+            </summary>
+            <param name="request">The login credentials including username and password.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the login attempt's result.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with authentication details.
+            If the credentials are incorrect, returns an <see cref="T:Microsoft.AspNetCore.Mvc.UnauthorizedObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint handles user authentication.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AuthController.Logout">
+            <summary>
+            Logs out the current user by deleting the authentication cookie.
+            </summary>
+            <returns>
+            An <see cref="T:InsurenceManagementSystemWebApi.Shared.Common.OperationResult`1"/> containing a success message.
+            </returns>
+            
+            <remarks>
+            Deletes the JWT authentication cookie to log the user out.
+            The cookie is set to expire immediately.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.AuthController.GetRole">
+            <summary>
+            Retrieves the role information for the current user or system.
+            </summary>
+            <returns>
+            An <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult"/> containing an <see cref="T:InsurenceManagementSystemWebApi.Shared.Common.OperationResult`1"/> of the role data.
+            Returns 200 OK with the role information if successful.
+            Returns 400 Bad Request if the retrieval fails (e.g., service error, no role found).
+            </returns>
+            <remarks>
+            This endpoint requires the user to have one of the following roles:
+            'MaintenanceEngineer', 'Developer', 'NetworkEngineer', 'DevOpsEngineer',
+            'DatabaseAdministrator', 'Tester', or 'Manager'.
+            It delegates the retrieval of role information to the employee service.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetProfile">
+            <summary>
+            Retrieves the profile details of the currently authenticated customer.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the customer's profile information.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the profile details.
+            If the profile is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/> with an error message.
+            </returns>
+            <remarks>
+            This endpoint allows a customer to fetch their profile details.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.UpdateProfile(InsurenceManagementSystemWebApi.Applications.DTOs.CustomerProfileUpdateRequestDto)">
+            <summary>
+            Updates the profile details of the currently authenticated customer.
+            </summary>
+            <param name="updateCustomerProfileDto">The updated profile details.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the update operation.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the updated profile.
+            If the customer is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/> with an error message.
+            </returns>
+            <remarks>
+            This endpoint allows a customer to update their profile details.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetRegisteredPolicies">
+            <summary>
+            Retrieves the list of policies registered by the currently authenticated customer.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the registered policies.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of registered policies.
+            If no policies are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetPolicyRequests">
+            <summary>
+            Retrieves the policy requests made by the currently authenticated customer.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the policy requests.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of policy requests.
+            If no policy requests are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.FileClaim(InsurenceManagementSystemWebApi.Applications.DTOs.ClaimFilingRequestDtoForCustomer)">
+            <summary>
+            Allows a customer to file an insurance claim.
+            </summary>
+            <param name="dto">The claim filing details provided by the customer.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the claim filing.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the claim filing response.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.RequestPolicy(InsurenceManagementSystemWebApi.Applications.DTOs.PolicyRequestDto)">
+            <summary>
+            Allows a customer to request a new policy.
+            </summary>
+            <param name="requestDto">The policy request details provided by the customer.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the status of the policy request.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the request response.
+            If the request is invalid, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetMyClaims">
+            <summary>
+            Retrieves all claims associated with the currently authenticated customer.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the list of claims.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the claims.
+            If no claims are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetMyNotifications">
+            <summary>
+            Retrieves the list of notifications for the currently authenticated customer.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> containing the customer's notifications.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the list of notifications.
+            If no notifications are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetAllAvailablePolicies(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of available policies.
+            </summary>
+            <param name="page">The page number to retrieve. Defaults to 1.</param>
+            <param name="size">The number of policies per page. Defaults to 10.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing a paginated list of available policies.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the policies.
+            If no policies are found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetAvailablePolicyByIdAsync(System.Int32)">
+            <summary>
+            Retrieves an available policy by its unique ID.
+            </summary>
+            <param name="policyId">The unique identifier of the policy to retrieve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing the policy details.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the policy information.
+            If the policy is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.GetPolicyRequestByIdAsync(System.Int32)">
+            <summary>
+            Retrieves the status of a specific policy request by its unique ID.
+            </summary>
+            <param name="requestId">The unique identifier of the policy request to retrieve.</param>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.ActionResult`1"/> containing the policy request status.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> with the request information.
+            If the request is not found, returns a <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"/>.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Controllers.CustomerController.DeleteAccount">
+            <summary>
+            Deletes the account of the currently authenticated customer.
+            </summary>
+            <returns>
+            Returns an <see cref="T:Microsoft.AspNetCore.Mvc.IActionResult"/> indicating the result of the account deletion process.
+            If successful, returns an <see cref="T:Microsoft.AspNetCore.Mvc.OkObjectResult"/> confirming the deletion.
+            If the deletion fails, returns a <see cref="T:Microsoft.AspNetCore.Mvc.BadRequestObjectResult"/> with an error message.
+            </returns>
+            <remarks>
+            This endpoint is accessible only to users with the Customer role.
+            </remarks>
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.initial">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.addingcolumnValidityperiod">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.addingcolumnValidityperiod.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.addingcolumnValidityperiod.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.addingcolumnValidityperiod.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.CreatingDatabaseIMS">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.CreatingDatabaseIMS.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.CreatingDatabaseIMS.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.CreatingDatabaseIMS.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.ims">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.ims.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.ims.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.ims.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.updatingNavigatingProperties">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.updatingNavigatingProperties.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.updatingNavigatingProperties.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.updatingNavigatingProperties.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.DeleteBehaviourConfiguration">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.DeleteBehaviourConfiguration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.DeleteBehaviourConfiguration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.DeleteBehaviourConfiguration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.changedNotificationModel">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.changedNotificationModel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.changedNotificationModel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.changedNotificationModel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.updatingdataAnnotations">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.updatingdataAnnotations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.updatingdataAnnotations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.updatingdataAnnotations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:InsurenceManagementSystemWebApi.Migrations.AuditLogImplementaion">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.AuditLogImplementaion.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.AuditLogImplementaion.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:InsurenceManagementSystemWebApi.Migrations.AuditLogImplementaion.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

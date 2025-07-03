@@ -1,0 +1,76 @@
+<div class="full-page-content">
+    <mat-card class="policy-card">
+
+      <div class="policy-request-header">
+        <h1 class="card-title">Your Requested Policies</h1>
+        <mat-form-field appearance="outline" class="claims-filter-input">
+          <mat-label>Filter Requests</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search by ID, policy, or status" #filterInput>
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+ 
+      </div>
+      <mat-card-content>
+  
+         
+        <div class="mat-elevation-z2 claims-table-wrapper">
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="sno">
+              <th mat-header-cell *matHeaderCellDef> S.No. </th>
+              <td mat-cell *matCellDef="let policy; let i = index;"> {{ (dataSource.paginator?.pageIndex || 0) * (dataSource.paginator?.pageSize || 0) + i + 1 }} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="requestId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Request ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.requestId}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="availablePolicyName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Available Policy Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.availablePolicyName}} </td>
+            </ng-container>
+  
+           
+  
+            <ng-container matColumnDef="requestedOn">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Requested On </th>
+              <td mat-cell *matCellDef="let element"> {{element.requestedOn | date:'dd/MM/yyyy':'UTC'}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+              <td mat-cell *matCellDef="let element">
+                <span [ngClass]="getStatusClass(element.status)" class="status-chip">{{element.status}}</span>
+              </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" [attr.colspan]="displayedColumns.length">No data matching the filter "{{filterInput.value}}"</td>
+            </tr>
+          </table>
+  
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                      
+                         showFirstLastButtons
+                         aria-label="Select page of policy requests">
+          </mat-paginator>
+  
+        </div>
+  
+        <ng-template #noPoliciesAvailable>
+          <div class="empty-state">
+            <mat-icon class="empty-icon">document_scanner</mat-icon>
+            <p class="empty-message">You currently have no requested policies.</p>
+            <p class="empty-sub-message">It looks like you haven't requested any policies yet. Let's explore available options!</p>
+            <button mat-flat-button color="primary" class="explore-button">
+              <mat-icon>search</mat-icon> Explore Available Policies
+            </button>
+          </div>
+        </ng-template>
+  
+      </mat-card-content>
+    </mat-card>
+  </div>

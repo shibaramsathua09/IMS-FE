@@ -1,0 +1,81 @@
+<mat-card class="assigned-policies">
+  <h2>Assigned Policies</h2>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Available Policy ID -->
+    <ng-container matColumnDef="availablePolicyId">
+      <mat-header-cell *matHeaderCellDef> AvailablePolicy ID </mat-header-cell>
+      <mat-cell *matCellDef="let policy">
+        {{ policy.availablePolicyId }}
+      </mat-cell>
+    </ng-container>
+    <!-- Policy ID -->
+    <ng-container matColumnDef="policyId">
+      <mat-header-cell *matHeaderCellDef> Policy ID </mat-header-cell>
+      <mat-cell *matCellDef="let policy"> {{ policy.policyId }} </mat-cell>
+    </ng-container>
+ 
+    <ng-container matColumnDef="availablePolicyName">
+      <mat-header-cell *matHeaderCellDef>
+        Available Policy Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let policy">
+        {{ policy.availablePolicyName }}
+      </mat-cell>
+    </ng-container>
+  
+ 
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let policy"> {{ policy.customerName }} </mat-cell>
+    </ng-container>
+    <!-- Email -->
+    <ng-container matColumnDef="customerEmail">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let policy"> {{ policy.customerEmail }} </mat-cell>
+    </ng-container>
+    <!-- Phone -->
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+      <mat-cell *matCellDef="let policy"> {{ policy.phone }} </mat-cell>
+    </ng-container>
+    <!-- Issued Date -->
+    <ng-container matColumnDef="issuedDate">
+      <mat-header-cell *matHeaderCellDef> Issued Date </mat-header-cell>
+      <mat-cell *matCellDef="let policy">
+        {{ policy.issuedDate | date : "dd/MM/yyyy" }}
+      </mat-cell>
+    </ng-container>
+    <!-- Expiry Date -->
+    <ng-container matColumnDef="expiryDate">
+      <mat-header-cell *matHeaderCellDef> Expiry Date </mat-header-cell>
+      <mat-cell *matCellDef="let policy">
+        {{ policy.expiryDate | date : "dd/MM/yyyy" }}
+      </mat-cell>
+    </ng-container>
+    <!-- Remove redundant mat-cell block -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let policy">
+        <button
+          mat-raised-button
+          class="file-claim-button"
+          (click)="fileClaim(policy)"
+        >
+          File a Claim
+        </button>
+      </mat-cell>
+    </ng-container>
+ 
+   
+ 
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+    <mat-paginator [length]="totalPolicies"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="onPageChange($event)"
+                   aria-label="Select">
+    </mat-paginator>
+</mat-card>

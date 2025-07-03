@@ -1,0 +1,46 @@
+.filed-claims {
+  width: 100vw;
+  max-width: 950px;
+  padding: 16px;
+  padding:15px;
+  margin: 10px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+}
+ 
+   
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    border-bottom: gray;
+  }
+   
+  mat-table {
+    width: 100%;
+  }
+   
+  /* Status Styling */
+  .status {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+   
+  .status.approved {
+    color: white;
+    background-color: green;
+  }
+   
+  .status.pending {
+    color: white;
+    background-color: orange;
+  }
+   
+  .status.rejected {
+    color: white;
+    background-color: red;
+  }

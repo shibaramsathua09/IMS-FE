@@ -1,0 +1,36 @@
+.dialog-content {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form fields */
+    min-width: 450px; /* Adjust min width for readability */
+  }
+   
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .half-width {
+    width: 48%; /* Adjust for gap */
+    margin-top: 10px;
+  }
+
+  .coverageDetails{
+    margin-top: 10px;
+  }
+   
+  .full-width {
+    width: 100%;
+  }
+   
+  mat-dialog-actions {
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    gap: 10px; /* Space between buttons */
+  }
+   
+  button mat-icon {
+    margin-right: 5px;
+  }

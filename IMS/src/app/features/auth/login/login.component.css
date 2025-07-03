@@ -1,0 +1,116 @@
+/* Import a clean professional font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+ 
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+/* Background setup */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  padding: 20px;
+}
+ 
+/* Card appearance */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 32px 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.login-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+ 
+/* Title styling */
+mat-card-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 25px;
+}
+ 
+/* Input fields */
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+ 
+mat-form-field {
+  transition: box-shadow 0.3s ease;
+}
+ 
+mat-form-field:hover {
+  box-shadow: 0 0 0 2px rgba(31, 64, 55, 0.15);
+  border-radius: 6px;
+}
+ 
+/* Button styling */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00c6ff, #0072ff); /* new gradient */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 114, 255, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+ 
+.submit-btn:hover:not([disabled]) {
+  background: linear-gradient(135deg, #0072ff, #00c6ff); /* reverse gradient */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 114, 255, 0.4);
+}
+ 
+.submit-btn:disabled {
+  background: #cccccc !important;
+  color: #666666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+ 
+/* Error message */
+.error-text {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 12px;
+  text-align: center;
+}
+ 
+/* Register link section */
+.register-text {
+  margin-top: 24px;
+  font-size: 14px;
+  text-align: center;
+  color: #444;
+}
+ 
+.register-link {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+ 
+.register-link:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+ 

@@ -1,0 +1,135 @@
+.welcome-container {
+    padding: 1rem; /* Equivalent to Tailwind's p-4 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  /* Media query for medium screens and above (md: equivalent) */
+  @media (min-width: 768px) {
+    .welcome-container {
+      padding: 2rem; /* Equivalent to Tailwind's md:p-8 */
+    }
+  }
+ 
+  /* Styles for the Angular Material Card */
+  .welcome-card {
+    width: 100%; /* Equivalent to Tailwind's w-full */
+    max-width: 64rem; /* Equivalent to Tailwind's max-w-4xl (approx. 1024px) */
+    padding: 1.5rem; /* Equivalent to Tailwind's p-6 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to Tailwind's shadow-lg */
+    border-radius: 0.75rem; /* Equivalent to Tailwind's rounded-xl */
+    background: linear-gradient(to bottom right, #eff6ff, #e0e7ff); /* Equivalent to Tailwind's bg-gradient-to-br from-blue-50 to-indigo-100 */
+    text-align: center; /* Equivalent to Tailwind's text-center */
+  }
+ 
+  /* Media query for medium screens and above (md: equivalent) */
+  @media (min-width: 768px) {
+    .welcome-card {
+      padding: 2rem; /* Equivalent to Tailwind's md:p-8 */
+    }
+  }
+ 
+  /* Content within the card */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  /* Icon styling */
+  .welcome-icon {
+    color: #4f46e5; /* Equivalent to Tailwind's text-indigo-600 */
+    margin-bottom: 1rem; /* Equivalent to Tailwind's mb-4 */
+    font-size: 3rem; /* Equivalent to Tailwind's text-5xl */
+  }
+ 
+  /* Media query for medium screens and above (md: equivalent) */
+  @media (min-width: 768px) {
+    .welcome-icon {
+      font-size: 3.75rem; /* Equivalent to Tailwind's md:text-6xl */
+    }
+  }
+ 
+  /* Title styling */
+  .welcome-title {
+    font-size: 1.875rem; /* Equivalent to Tailwind's text-3xl */
+    font-weight: 800; /* Equivalent to Tailwind's font-extrabold */
+    color: #1f2937; /* Equivalent to Tailwind's text-gray-800 */
+    margin-bottom: 1rem; /* Equivalent to Tailwind's mb-4 */
+    line-height: 1.25; /* Equivalent to Tailwind's leading-tight */
+  }
+ 
+  /* Media query for medium screens and above (md: equivalent) */
+  @media (min-width: 768px) {
+    .welcome-title {
+      font-size: 2.25rem; /* Equivalent to Tailwind's md:text-4xl */
+    }
+  }
+ 
+  /* Message paragraph styling */
+  .welcome-message {
+    font-size: 1rem; /* Equivalent to Tailwind's text-base */
+    color: #374151; /* Equivalent to Tailwind's text-gray-700 */
+    line-height: 1.625; /* Equivalent to Tailwind's leading-relaxed */
+    max-width: 48rem; /* Equivalent to Tailwind's max-w-3xl (approx. 768px) */
+  }
+ 
+  /* Media query for medium screens and above (md: equivalent) */
+  @media (min-width: 768px) {
+    .welcome-message {
+      font-size: 1.125rem; /* Equivalent to Tailwind's md:text-lg */
+    }
+  }
+ 
+  /* --- Optional Button Group Styles (if uncommented in HTML) --- */
+  .button-group {
+    margin-top: 1.5rem; /* Equivalent to Tailwind's mt-6 */
+    display: flex;
+    flex-wrap: wrap; /* Equivalent to Tailwind's flex-wrap */
+    justify-content: center; /* Equivalent to Tailwind's justify-center */
+    gap: 1rem; /* Equivalent to Tailwind's gap-4 */
+  }
+ 
+  .policy-button, .payment-button {
+    border-radius: 0.5rem; /* Equivalent to Tailwind's rounded-lg */
+    padding: 0.75rem 1.5rem; /* Equivalent to Tailwind's px-6 py-3 */
+  }
+ 
+  .policy-button {
+    background-color: #4f46e5; /* Equivalent to Tailwind's bg-indigo-600 */
+    color: #ffffff; /* Equivalent to Tailwind's text-white */
+  }
+ 
+  .policy-button:hover {
+    background-color: #4338ca; /* Equivalent to Tailwind's hover:bg-indigo-700 */
+  }
+ 
+  .payment-button {
+    border: 1px solid #4f46e5; /* Equivalent to Tailwind's border-indigo-600 */
+    color: #4f46e5; /* Equivalent to Tailwind's text-indigo-600 */
+    background-color: transparent;
+  }
+ 
+  .payment-button:hover {
+    background-color: rgba(79, 70, 229, 0.05); /* Equivalent to Tailwind's hover:bg-indigo-50 */
+  }
+ 
+  .button-icon {
+    margin-right: 0.5rem; /* Equivalent to Tailwind's mr-2 */
+  }
+ 
+  /* Angular Material Button Overrides (plain CSS, using direct hex values) */
+  .mat-flat-button.mat-primary {
+    --mdc-filled-button-container-color: #4f46e5; /* A shade of indigo */
+    --mdc-filled-button-label-text-color: #ffffff; /* White */
+  }
+  .mat-stroked-button.mat-primary {
+    --mdc-outlined-button-outline-color: #4f46e5; /* A shade of indigo */
+    --mdc-outlined-button-label-text-color: #4f46e5; /* A shade of indigo */
+  }
+  .mat-stroked-button.mat-primary:hover {
+    --mdc-outlined-button-outline-color: #4338ca; /* A slightly darker indigo */
+    --mdc-outlined-button-state-layer-color: rgba(79, 70, 229, 0.05); /* A light indigo transparent overlay */
+  }
+ 

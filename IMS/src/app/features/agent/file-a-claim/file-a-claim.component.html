@@ -1,0 +1,84 @@
+<div class="submit-claim-wrapper content-card">
+    <div class="header-section">
+      <h2 class="card-title">Submit New Claim</h2>
+      <p class="subtitle">Please fill out the form below with details of your claim.</p>
+    </div>
+   
+    <form [formGroup]="claimForm" (ngSubmit)="onSubmit()" class="claim-form">
+   
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="form-field-item">
+          <mat-label>Policy ID</mat-label>
+          <input matInput formControlName="policyId" placeholder="e.g., POL12345" required readonly>
+          <mat-icon matSuffix>assignment</mat-icon>
+          <mat-error *ngIf="claimForm.get('policyId')?.hasError('required') && claimForm.get('policyId')?.touched">
+            Policy ID is required.
+          </mat-error>
+        </mat-form-field>
+   
+
+        <mat-form-field appearance="outline" class="form-field-item">
+            <mat-label>Customer ID</mat-label>
+            <input matInput formControlName="customerId" placeholder="e.g., CUS12345" required readonly>
+            <mat-icon matSuffix>assignment</mat-icon>
+            <mat-error *ngIf="claimForm.get('customerId')?.hasError('required') && claimForm.get('customerId')?.touched">
+              Customer ID is required.
+            </mat-error>
+        </mat-form-field>
+
+
+    
+
+
+
+        
+      </div>
+   
+      <div class="form-row">
+
+        <mat-form-field appearance="outline" class="form-field-item">
+          <mat-label>Agent ID</mat-label>
+          <input matInput formControlName="agentId" placeholder="e.g., 1" required readonly>
+          <mat-icon matSuffix>assignment</mat-icon>
+          <mat-error *ngIf="claimForm.get('agentId')?.hasError('required') && claimForm.get('agentId')?.touched">
+            Agent ID is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-item">
+          <mat-label>Claim Amount (₹)</mat-label>
+          <input matInput type="number" formControlName="claimAmount" placeholder="e.g., 50000" required min="0.01" >
+          <mat-icon matSuffix>currency_rupee</mat-icon>
+          <mat-error *ngIf="claimForm.get('claimAmount')?.hasError('required') && claimForm.get('claimAmount')?.touched">
+            Claim amount is required.
+          </mat-error>
+          <mat-error *ngIf="claimForm.get('claimAmount')?.hasError('min') && claimForm.get('claimAmount')?.touched">
+            Amount must be greater than zero.
+          </mat-error>
+          <mat-error *ngIf="claimForm.get('claimAmount')?.hasError('max') && claimForm.get('claimAmount')?.touched">
+            Amount must be less than 1 crore.
+          </mat-error>
+          <mat-error *ngIf="claimForm.get('claimAmount')?.invalid && !claimForm.get('claimAmount')?.hasError('required') && claimForm.get('claimAmount')?.touched">
+            Please enter a valid amount.
+          </mat-error>
+        </mat-form-field>
+   
+      </div>
+   
+ 
+   
+
+   
+      <div class="form-actions">
+        <button mat-stroked-button color="warn" (click)="onCancel()" type="button">
+          <mat-icon>arrow_back</mat-icon> Back to Assigned Policies
+        </button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="claimForm.invalid">
+          <mat-icon>send</mat-icon> Submit Claim
+        </button>
+      </div>
+    </form>
+</div>
+   
+ 
+   

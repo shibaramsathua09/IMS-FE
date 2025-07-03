@@ -1,0 +1,80 @@
+<mat-sidenav-container class="dashboard-container" [hasBackdrop]="mobileQuery.matches">
+  <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="isSidenavOpened" class="sidenav">
+  <div class="sidenav-header">
+  <div class="logo-section-sidenav">
+  <img src="https://cdn-icons-png.freepik.com/256/4371/4371433.png" alt="Company Logo" class="company-logo-sidenav">
+  <span class="logo-text-sidenav">IMS</span>
+  </div>
+  <button mat-icon-button class="sidenav-close-button" (click)="sidenav.close()" aria-label="Close sidenav">
+  <mat-icon>close</mat-icon>
+  </button>
+  </div>
+   
+      <mat-nav-list class="sidenav-nav-list">
+  <a mat-list-item routerLink="/agent/available-policies" routerLinkActive="active-link" (click)="sidenav.close()" class="margin">
+  <mat-icon>policy</mat-icon> Available Policies
+  </a>
+  <a mat-list-item routerLink="/agent/assigned-policies" routerLinkActive="active-link" (click)="sidenav.close()" class="margin">
+  <mat-icon>assignment_ind</mat-icon> Assigned Policies
+  </a>
+   
+   
+  <a mat-list-item routerLink="/agent/filed-claims" routerLinkActive="active-link" (click)="sidenav.close()" class="margin">
+  <mat-icon>receipt_long</mat-icon> Filed Claims
+  </a>
+   
+   
+      </mat-nav-list>
+  </mat-sidenav>
+   
+    <mat-sidenav-content class="main-content">
+  <mat-toolbar class="dashboard-toolbar">
+  <button mat-icon-button class="menu-button" (click)="sidenav.toggle()" aria-label="Toggle sidenav">
+  <mat-icon>menu</mat-icon>
+  </button>
+   
+        <div class="logo-section-toolbar">
+  <img src="https://cdn-icons-png.freepik.com/256/4371/4371433.png" alt="Company Logo" class="company-logo-toolbar">
+  <span class="logo-text-toolbar">IMS</span>
+  </div>
+   
+        <div class="user-greeting">
+ 
+          Hello {{ userName }}
+  </div>
+   
+        <span class="toolbar-spacer"></span>
+   
+        <button mat-icon-button class="notification-button" aria-label="Notifications" [matBadge]="notificationsCount"
+ 
+          matBadgeSize="small" matBadgeColor="accent" matBadgePosition="above after" (click)="onBellIconClick()">
+  <mat-icon>notifications</mat-icon>
+  </button>
+   
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile Menu" class="profile-avatar-button">
+  <img [src]="userProfilePicture" alt="Profile Picture" class="toolbar-profile-picture">
+  </button>
+  <mat-menu #profileMenu="matMenu" class="profile-menu-panel">
+  <div class="profile-card-header">
+  <img [src]="userProfilePicture" alt="Profile Picture" class="profile-picture">
+  <div class="profile-info">
+  <div class="profile-name">{{ userName }}</div>
+  </div>
+  </div>
+  <mat-divider class="menu-divider"></mat-divider>
+  <button mat-menu-item (click)="onProfileClick()">
+  <mat-icon>account_circle</mat-icon>
+  <span>Profile</span>
+  </button>
+  <button mat-menu-item (click)="onSignOut()">
+  <mat-icon>exit_to_app</mat-icon>
+  <span>Logout</span>
+  </button>
+  </mat-menu>
+  </mat-toolbar>
+   
+      <div class="content-area">
+  <router-outlet></router-outlet>
+  </div>
+  </mat-sidenav-content>
+  </mat-sidenav-container>

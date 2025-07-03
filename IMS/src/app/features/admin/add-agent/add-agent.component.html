@@ -1,0 +1,58 @@
+<mat-card class="form-card">
+  <mat-card-title>Add New Agent</mat-card-title>
+  <form [formGroup]="agentForm" (ngSubmit)="onSubmit()" class="form-container">
+ 
+    <div class="form-row" *ngFor="let field of fields">
+      <label class="form-label">{{ field.label }}</label>
+      <mat-form-field appearance="fill" class="form-input">
+        <input matInput [type]="field.type" [formControlName]="field.name" [placeholder]="field.placeholder" />
+        <mat-error *ngIf="agentForm.get(field.name)?.hasError('required') && agentForm.get(field.name)?.touched">
+          Please enter {{ field.label.toLowerCase() }}.
+        </mat-error>
+ 
+        <mat-error *ngIf="agentForm.get('userName')?.hasError('minlength')">
+              userName must be at least 3 characters long.
+            </mat-error>
+        <mat-error *ngIf="agentForm.get('userName')?.hasError('maxlength')">
+              userName must be at most 20 characters long.
+            </mat-error>
+          <mat-error *ngIf="agentForm.get('userName')?.hasError('pattern')">
+              userName can only contain letters, numbers, and underscores.
+            </mat-error>
+ 
+ 
+          <mat-error *ngIf="agentForm.get('Name')?.hasError('pattern') && agentForm.get('Name')?.touched">
+              Name can only contain letters and spaces.
+            </mat-error>
+ 
+          <mat-error *ngIf="agentForm.get(' Name')?.hasError('maxlength')">
+                Name should not exceed 25 characters .
+              </mat-error>
+         
+ 
+        <mat-error *ngIf="field.name === 'Password' && agentForm.get('Password')?.hasError('minlength')">
+          Password must be at least 6 characters long.
+        </mat-error>
+        <mat-error *ngIf="field.name === 'Password' && agentForm.get('Password')?.hasError('pattern')">
+          Password must contain uppercase, lowercase, number, and special character.
+        </mat-error>
+        <mat-error *ngIf="field.name === 'ConfirmPassword' && agentForm.get('ConfirmPassword')?.hasError('mismatch')">
+          Passwords do not match.
+        </mat-error>
+        <mat-error *ngIf="field.name === 'Email' && agentForm.get('Email')?.hasError('email')">
+          Please enter a valid email address.
+        </mat-error>
+        <mat-error *ngIf="field.name === 'contactInfo' && agentForm.get('contactInfo')?.hasError('pattern')">
+          Please enter a valid 10-digit contact number.
+        </mat-error>
+ 
+      </mat-form-field>
+    </div>
+ 
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">Add Agent</button>
+      <button mat-stroked-button color="warn" type="button" (click)="agentForm.reset()">Reset</button>
+    </div>
+  </form>
+</mat-card>
+ 

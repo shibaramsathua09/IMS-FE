@@ -1,0 +1,285 @@
+/* General Body and Container Styles (Optional: could be in global styles.css if preferred) */
+ 
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif; /* Or your preferred font-family */
+  background-color: #f4f7f6; /* Light background for the whole page */
+  color: #333;
+}
+ 
+/* Toolbar and Nav */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  /* Attractive Navbar Color: A darker, rich blue */
+  background-color: #008080; /* Deep Ocean Blue */
+  color: white;
+  height: 50px; /* Standard Material toolbar height */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* Stronger, professional shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+ 
+.company-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 12px;
+  object-fit: contain;
+  margin-right: 1rem;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for logo background */
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for logo */
+}
+ 
+.navbar-title {
+  /* Font size: Not too large, clear and readable */
+  font-size: 1.2rem; /* Slightly reduced from 1.8rem for less large feel */
+  font-weight: 500;
+  color: #e0f2f7; /* A lighter blue-white for title */
+  letter-spacing: 0.5px;
+}
+ 
+.spacer {
+  flex: 1;
+}
+ 
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+ 
+/* Base styles for all nav links/buttons */
+.nav-links a.mat-button,
+.nav-links button.mat-stroked-button,
+.nav-links button.mat-flat-button {
+  margin-left: 1.5rem;
+  font-size: 0.95rem; /* Consistent smaller font size for all nav text */
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease; /* Smooth transition for all properties */
+  min-width: unset;
+  padding: 8px 16px;
+  border-radius: 4px; /* Slightly rounded for all */
+}
+ 
+/* Specific styling for the Home link */
+.nav-links a.mat-button {
+  color: #e0f2f7; /* Light blue-white for Home */
+}
+.nav-links a.mat-button mat-icon {
+  margin-right: 5px;
+}
+.nav-links a.mat-button:hover {
+  color: #ffc107; /* Bright yellow on hover */
+  background-color: rgba(255, 255, 255, 0.15); /* More visible background on hover */
+}
+ 
+ 
+/* Specific styling for Register button (mat-flat-button) */
+.nav-links button.mat-flat-button {
+  background-color: #ffc107; /* Solid yellow background */
+  color: #1a4a75; /* Dark blue text */
+  padding: 8px 16px; /* Standard flat button padding */
+  border-radius: 20px; /* Pill shape for Register as well Register*/
+}
+.nav-links button.mat-flat-button:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
+  color: #0d2e4f; /* Even darker blue text on hover */
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.6);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+ 
+/* Full-page hero section */
+.hero-section {
+  width: 100%;
+  height: calc(100vh - 64px); /* Subtract navbar height */
+  /* Re-introducing the background image (from 10:03 screenshot) */
+  background: url('https://plus.unsplash.com/premium_photo-1661776260388-f5d1b14ce8a2?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Dark semi-transparent overlay */
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.65); /* Keeps the dark overlay */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+ 
+/* Text content */
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease-out 0.2s forwards;
+  position: relative;
+}
+ 
+.welcome-text {
+  font-size: 2.6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+}
+ 
+.subheading {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  color: #f1f1f1;
+  font-weight: 500;
+}
+ 
+.tagline {
+  font-size: 1.3rem;
+  color: #e0e0e0;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+ 
+/* CTA button */
+.hero-cta.mat-flat-button {
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  background-color: #ffc107;
+  color: #1a4a75; /* Matches new navbar color for contrast */
+  border: none;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+ 
+.hero-cta.mat-flat-button:hover {
+  transform: translateY(-5px) scale(1.03);
+  background-color: #e0a800;
+  color: #0d2e4f;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+ 
+/* Keyframe animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+/* Responsive tweaks for Hero Section */
+@media (max-width: 768px) {
+  .welcome-text {
+    font-size: 2.8rem;
+  }
+  .subheading {
+    font-size: 1.8rem;
+  }
+  .tagline {
+    font-size: 1.1rem;
+  }
+  .hero-cta.mat-flat-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+ 
+@media (max-width: 500px) {
+  .welcome-text {
+    font-size: 2rem;
+  }
+  .subheading {
+    font-size: 1.4rem;
+  }
+  .tagline {
+    font-size: 1rem;
+  }
+  .hero-overlay {
+    padding: 1rem;
+  }
+}
+ 
+ 
+/* Highlight Grid */
+.highlight-section {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+ 
+/* Flip Cards */
+.flip-card {
+  perspective: 1000px;
+  width: 240px;
+  height: 260px;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flip-back {
+  transform: rotateY(180deg);
+  background-color: #f3f3f3;
+}
+.card-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+  object-fit: contain;
+}
+ 
+/* Footer */
+.footer {
+  background: #222;
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.footer .social-icons a {
+  color: #fff;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+}
+.footer .social-icons a:hover {
+  color: #ffc107;
+}

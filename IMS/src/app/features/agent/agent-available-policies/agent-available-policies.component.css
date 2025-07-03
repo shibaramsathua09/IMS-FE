@@ -1,0 +1,29 @@
+.available-policies {
+  width: 100%;
+  max-width: 1000px;
+  padding:20px;
+  margin: 10px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  }
+ 
+  .available-policies{
+    width: 950px;
+  }
+  .border-bottom {
+    border-bottom: 1px solid gray;
+    margin-bottom: 16px;
+  }
+  mat-table {
+    width: 100%;
+  }
+  mat-header-cell, mat-cell {
+    padding: 12px;
+    text-align: left;
+  }
+ 
+ 
+ 

@@ -1,0 +1,81 @@
+<div class="agent-profile-container">
+  <div class="profile-header">
+    <h1 class="header-title">My Profile</h1>
+  </div>
+ 
+  <div class="profile-display-section" *ngIf="!isEditing && user">
+    <div class="profile-details">
+      <div class="detail-group">
+        <div class="detail-label-wrapper">
+          <span class="detail-label">Agent Id:</span>
+        </div>
+        <div class="detail-value-wrapper">
+          <span class="detail-value">{{ user.agentId }}</span>
+        </div>
+      </div>
+      <div class="detail-group">
+        <div class="detail-label-wrapper">
+          <span class="detail-label">Username:</span>
+        </div>
+        <div class="detail-value-wrapper">
+          <span class="detail-value">{{ user.username }}</span>
+        </div>
+      </div>
+ 
+      <div class="detail-group">
+        <div class="detail-label-wrapper">
+          <span class="detail-label">Name:</span>
+        </div>
+        <div class="detail-value-wrapper">
+          <span class="detail-value">{{ user.name }}</span>
+        </div>
+      </div>
+      <div class="detail-group">
+        <div class="detail-label-wrapper">
+          <span class="detail-label">Contact Info.:</span>
+        </div>
+        <div class="detail-value-wrapper">
+          <span class="detail-value">{{ user.contactInfo }}</span>
+        </div>
+      </div>
+    </div>
+ 
+    <button mat-raised-button color="primary" (click)="enableEdit()" class="edit-profile-button">
+      <mat-icon>edit</mat-icon> Edit Profile
+    </button>
+  </div>
+ 
+  <div class="profile-edit-section" *ngIf="isEditing">
+    <h2 class="edit-section-title">Edit Profile Details</h2>
+    <form [formGroup]="profileForm" class="profile-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="profileForm.controls['name'].hasError('required') && profileForm.controls['name'].touched">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+ 
+      <mat-form-field appearance="outline">
+        <mat-label>Contact Info</mat-label>
+        <input matInput formControlName="contactInfo">
+        <mat-error *ngIf="profileForm.controls['contactInfo'].hasError('required') && profileForm.controls['contactInfo'].touched">
+          Mobile number is required
+        </mat-error>
+        <mat-error *ngIf="profileForm.controls['contactInfo'].hasError('pattern') && profileForm.controls['contactInfo'].touched">
+          Enter a valid 10-digit mobile number
+        </mat-error>
+      </mat-form-field>
+ 
+      <div class="form-actions">
+        <button mat-flat-button color="primary" (click)="updateProfile()" [disabled]="profileForm.invalid" class="save-button">
+          <mat-icon>save</mat-icon> Save Changes
+        </button>
+        <button mat-button (click)="cancelEdit()" class="cancel-button">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+ 

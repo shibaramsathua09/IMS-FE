@@ -1,0 +1,283 @@
+.my-policies-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+}
+ 
+.mat-mdc-header-cell {
+  padding: 0;
+}
+.mat-mdc-cell {
+  padding: 0;
+}
+/* Header Section */
+.policies-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 15px;
+  background: linear-gradient(to right, #f8f9fa, #eef1f6);
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+ 
+.policies-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: #673ab7;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+/* Search Field */
+.search-field {
+  width: 300px;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-bottom-align::before {
+  display: none !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-text-field-wrapper {
+  height: 50px !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-infix {
+  min-height: 20px !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+ 
+.search-field ::ng-deep .mat-mdc-form-field-hint-wrapper,
+.search-field ::ng-deep .mat-mdc-form-field-error-wrapper {
+  display: none !important;
+}
+ 
+.search-field ::ng-deep .mdc-notched-outline__leading,
+.search-field ::ng-deep .mdc-notched-outline__notch,
+.search-field ::ng-deep .mdc-notched-outline__trailing {
+  height: 50px !important;
+}
+ 
+.policy-search-field {
+  width: 280px;
+}
+ 
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-flex {
+  padding: 0.5em 1em !important;
+}
+ 
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-infix {
+  padding-top: 0.8em !important;
+  padding-bottom: 0.8em !important;
+}
+ 
+/* Table Wrapper */
+.policies-table-wrapper {
+  padding: 25px 35px;
+  overflow-x: auto;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  table-layout: fixed;
+}
+ 
+/* Table Headers */
+th.mat-header-cell {
+  background-color: #42a5f5;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 18px 15px;
+  text-align: left;
+  border-bottom: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+ 
+th.mat-header-cell:first-child {
+  border-top-left-radius: 8px;
+}
+th.mat-header-cell:last-child {
+  border-top-right-radius: 8px;
+}
+ 
+/* Table Data Cells */
+td.mat-cell {
+  padding: 15px;
+  color: #444;
+  font-size: 0.95em;
+  border-bottom: 1px solid #f0f0f0;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+ 
+/* Alternating row background */
+tr.mat-row:nth-child(even) {
+  background-color: #fcfcfc;
+}
+tr.mat-row:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.2s ease-in-out;
+}
+ 
+tr.mat-row:last-child td.mat-cell {
+  border-bottom: none;
+}
+ 
+/* --- COLUMN WIDTH DEFINITIONS (Adjusted for removal of 'sno') --- */
+/* You might want to slightly increase other widths to fill the space */
+ 
+/* REMOVED: Styles for th.mat-header-cell.mat-column-sno, td.mat-cell.mat-column-sno */
+ 
+th.mat-header-cell.mat-column-policyId,
+td.mat-cell.mat-column-policyId {
+  width: 10%; /* Adjusted from 90px, using percentage for more flexibility */
+}
+ 
+th.mat-header-cell.mat-column-availablePolicyId,
+td.mat-cell.mat-column-availablePolicyId {
+  width: 15%;
+}
+ 
+th.mat-header-cell.mat-column-issuedDate,
+td.mat-cell.mat-column-issuedDate,
+th.mat-header-cell.mat-column-expiryDate,
+td.mat-cell.mat-column-expiryDate {
+  width: 12%; /* Giving more space to dates */
+}
+ 
+th.mat-header-cell.mat-column-agentId,
+td.mat-cell.mat-column-agentId {
+  width: 10%;
+}
+ 
+th.mat-header-cell.mat-column-agentContact,
+td.mat-cell.mat-column-agentContact {
+  width: 15%;
+}
+ 
+th.mat-header-cell.mat-column-premiumAmount,
+td.mat-cell.mat-column-premiumAmount {
+  width: 13%; /* Adjusted for currency, leaving some flexibility */
+  text-align: right;
+}
+ 
+th.mat-header-cell.mat-column-actions,
+td.mat-cell.mat-column-actions {
+  width: 13%; /* Ensure the button fits */
+  text-align: center;
+}
+ 
+/* Styling for the File a Claim button */
+.file-claim-button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  min-width: 90px;
+}
+ 
+.file-claim-button:hover:not([disabled]) {
+  background-color: #0056b3;
+}
+ 
+/* No data row */
+.mat-no-data-row {
+  text-align: center;
+  padding: 30px;
+  color: #888;
+  font-style: italic;
+}
+ 
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .my-policies-container {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+ 
+  .policies-header {
+    padding: 20px 25px;
+  }
+ 
+  .policies-title {
+    font-size: 1.8em;
+  }
+ 
+  .policies-table-wrapper {
+    padding: 15px 25px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .policies-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+  }
+ 
+  .policies-title {
+    font-size: 1.5em;
+  }
+ 
+  .policy-search-field {
+    width: 100%;
+  }
+ 
+  .policies-table-wrapper {
+    overflow-x: auto;
+    padding: 15px 20px;
+  }
+ 
+  table {
+    width: 100%;
+  }
+ 
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 12px 10px;
+    font-size: 0.85em;
+  }
+ 
+  .file-claim-button {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .policies-title {
+    font-size: 1.3em;
+  }
+ 
+  .file-claim-button {
+    padding: 5px 10px;
+    font-size: 0.75em;
+  }
+}
+ 
+ 

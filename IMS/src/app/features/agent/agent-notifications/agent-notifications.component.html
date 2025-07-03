@@ -1,0 +1,104 @@
+<div class="notification-dashboard mat-elevation-z2">
+  <mat-toolbar color="primary" class="notification-toolbar">
+    <mat-icon
+      class="header-icon"
+      matBadge="{{ unreadNotificationCount }}"
+      matBadgeColor="accent"
+      matBadgeHidden="{{ unreadNotificationCount === 0 }}"
+      >notifications</mat-icon
+    >
+    <h2 class="header-title">Alerts & Notifications</h2>
+    <span class="toolbar-spacer"></span>
+    <button
+      mat-flat-button
+      color="accent"
+      class="mark-all-read-button"
+      (click)="markAllAsRead()"
+      [disabled]="!hasUnreadNotifications"
+      matTooltip="Mark all notifications as read"
+    >
+      <mat-icon>done_all</mat-icon> Mark All
+    </button>
+  </mat-toolbar>
+
+  <div class="notification-list-container">
+    <ng-container *ngIf="notifications.length > 0; else noNotifications">
+      <mat-list>
+        <ng-container
+          *ngFor="
+            let notification of notifications;
+            let last = last;
+            let i = index
+          "
+        >
+          <mat-list-item
+            class="notification-item"
+            [ngClass]="{ unread: !notification.read }"
+          >
+            <input
+              type="checkbox"
+              id="expand-toggle-{{ notification.notificationId || i }}"
+              class="expand-toggle-checkbox"
+            />
+            <label
+              for="expand-toggle-{{ notification.notificationId || i }}"
+              class="expand-toggle-label"
+            ></label>
+
+            <div matListItemTitle class="notification-content">
+              <span
+                class="notification-message"
+                [class.message-read]="notification.read"
+              >
+                {{ notification.message }}
+              </span>
+              <span class="notification-timestamp">{{
+                notification.createdAt | date : "MMM d, h:mm a"
+              }}</span>
+            </div>
+
+            <div matListItemMeta class="notification-actions">
+              <button
+                mat-icon-button
+                class="read-toggle-button"
+                (click)="
+                  $event.stopPropagation(); toggleReadStatus(notification)
+                "
+                matTooltip="{{
+                  notification.read ? 'Mark as Unread' : 'Mark as Read'
+                }}"
+              >
+                <mat-icon>{{
+                  notification.read ? "mail_outline" : "mark_email_read"
+                }}</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                class="delete-button"
+                (click)="
+                  $event.stopPropagation();
+                  dismissNotification(notification.notificationId)
+                "
+                matTooltip="Delete Notification"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
+          <mat-divider *ngIf="!last"></mat-divider>
+        </ng-container>
+      </mat-list>
+    </ng-container>
+
+    <ng-template #noNotifications>
+      <div class="empty-state">
+        <mat-icon class="empty-icon">inbox</mat-icon>
+        <p class="empty-message">No notifications found.</p>
+        <p class="empty-sub-message">Your inbox is wonderfully empty.</p>
+        <button mat-flat-button color="accent" class="refresh-button">
+          <mat-icon>refresh</mat-icon> Fetch Notifications
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

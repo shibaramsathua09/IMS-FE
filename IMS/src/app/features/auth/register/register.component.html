@@ -1,0 +1,117 @@
+<body><mat-card class="registration-card">
+  <mat-card-header>
+  <mat-card-title>Customer Registration</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+  <mat-label>Username</mat-label>
+  <input matInput formControlName="username" required maxlength="20">
+  <mat-error *ngIf="registrationForm.get('username')?.hasError('required') && registrationForm.get('username')?.touched">
+            Username is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('username')?.hasError('pattern') && registrationForm.get('username')?.touched">
+            Username must start with a letter and can only contain letters, numbers, and underscores.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('username')?.hasError('maxlength') && registrationForm.get('username')?.touched">
+            Username cannot exceed 20 characters.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Password</mat-label>
+  <input matInput type="password" formControlName="password" required>
+  <mat-error *ngIf="registrationForm.get('password')?.hasError('required') && registrationForm.get('password')?.touched">
+            Password is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('password')?.hasError('minlength') && registrationForm.get('password')?.touched">
+            Password must be at least 6 characters long.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('password')?.hasError('pattern') && registrationForm.get('password')?.touched">
+            Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Confirm Password</mat-label>
+  <input matInput type="password" formControlName="confirmPassword" required>
+  <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('required') && registrationForm.get('confirmPassword')?.touched">
+            Confirm Password is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('mismatch') && registrationForm.get('confirmPassword')?.touched">
+            Passwords do not match.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('minlength') && registrationForm.get('confirmPassword')?.touched">
+            Confirm Password must be at least 6 characters long.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('confirmPassword')?.hasError('pattern') && registrationForm.get('confirmPassword')?.touched">
+            Confirm Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <input matInput formControlName="name" required>
+  <mat-error *ngIf="registrationForm.get('name')?.hasError('required') && registrationForm.get('name')?.touched">
+            Name is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('name')?.hasError('pattern') && registrationForm.get('name')?.touched">
+            Name can only contain letters and spaces.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Date of Birth</mat-label>
+  <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="dateOfBirth" required>
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-error *ngIf="registrationForm.get('dateOfBirth')?.hasError('required') && registrationForm.get('dateOfBirth')?.touched">
+            Date of Birth is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('dateOfBirth')?.hasError('futureDate') && registrationForm.get('dateOfBirth')?.touched">
+            Date of Birth cannot be in the future.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Email</mat-label>
+  <input matInput type="email" formControlName="email" required>
+  <mat-error *ngIf="registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.touched">
+            Email is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('email')?.hasError('email') && registrationForm.get('email')?.touched">
+            Invalid email format.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Phone</mat-label>
+  <input matInput type="tel" formControlName="phone" required maxlength="10" minlength="10">
+  <mat-error *ngIf="registrationForm.get('phone')?.hasError('required') && registrationForm.get('phone')?.touched">
+            Phone number is required.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('phone')?.hasError('pattern') && registrationForm.get('phone')?.touched">
+            Phone number can only contain numbers.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('phone')?.hasError('maxlength') && registrationForm.get('phone')?.touched">
+            Phone number cannot exceed 10 numbers.
+  </mat-error>
+  <mat-error *ngIf="registrationForm.get('phone')?.hasError('minlength') && registrationForm.get('phone')?.touched">
+            Phone number minimum contains 10 numbers.
+  </mat-error>
+  </mat-form-field>
+   
+        <mat-form-field appearance="fill">
+  <mat-label>Address</mat-label>
+  <textarea matInput formControlName="address" required rows="3"></textarea>
+  <mat-error *ngIf="registrationForm.get('address')?.hasError('required') && registrationForm.get('address')?.touched">
+            Address is required.
+  </mat-error>
+  </mat-form-field>
+   
+        <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">Register</button>
+  </form>
+  </mat-card-content>
+  </mat-card>
+</body>

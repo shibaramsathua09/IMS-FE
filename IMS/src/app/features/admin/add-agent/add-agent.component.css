@@ -1,0 +1,53 @@
+.form-card {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  width: 40vw;
+}
+ 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ 
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+ 
+.form-label {
+  width: 150px;
+  font-weight: 500;
+}
+ 
+.form-input {
+  flex: 1;
+  min-width: 200px;
+}
+ 
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+ 
+.success-snackbar {
+  background-color: #4caf50;
+  color: white;
+}
+ 
+.error-snackbar {
+  background-color: #f44336;
+  color: white;
+}
+ 
+.warning-snackbar {
+  background-color: #ff9800;
+  color: white;
+}
+ 
+ 

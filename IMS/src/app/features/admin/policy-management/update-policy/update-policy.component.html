@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Update Policy: {{ policyToUpdate.name }}</h2>
+<mat-dialog-content class="mat-typography dialog-content">
+ 
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Policy Name</mat-label>
+    <input matInput [(ngModel)]="policyToUpdate.name" name="policyName" required>
+    <mat-error *ngIf="!policyToUpdate.name">Policy Name is required</mat-error>
+  </mat-form-field>
+ 
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Coverage Details</mat-label>
+    <input matInput [(ngModel)]="policyToUpdate.coverageDetails" name="coverage" required>
+    <mat-error *ngIf="!policyToUpdate.coverageDetails">Coverage Details is required</mat-error>
+  </mat-form-field>
+ 
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Base Premium (₹)</mat-label>
+    <input matInput type="number" [(ngModel)]="policyToUpdate.basePremium" name="premiumAmount" required min="0">
+    <mat-error *ngIf="policyToUpdate.basePremium === null || policyToUpdate.basePremium === undefined">Base Premium is required</mat-error>
+    <mat-error *ngIf="policyToUpdate.basePremium < 0">Premium must be positive</mat-error>
+  </mat-form-field>
+ 
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Validity Period (in Years)</mat-label>
+    <mat-select [(ngModel)]="policyToUpdate.validityPeriod" name="validityPeriod" required>
+      <mat-option *ngFor="let period of validityPeriods" [value]="period">
+        {{period}} 
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="!policyToUpdate.validityPeriod">Validity Period is required</mat-error>
+  </mat-form-field>
+ 
+ 
+ 
+ 
+ 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onUpdate()">Update Policy</button>
+</mat-dialog-actions>

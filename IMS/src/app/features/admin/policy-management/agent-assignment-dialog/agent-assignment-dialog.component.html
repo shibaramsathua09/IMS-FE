@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Assign Agent to Policy</h2>
+<mat-dialog-content>
+  <p><strong>Policy ID:</strong> {{ policyId }}</p>
+  <mat-form-field appearance="outline">
+    <mat-label>Select Agent</mat-label>
+    <mat-select [(ngModel)]="agentId" name="agentId" required>
+      <mat-option *ngFor="let agent of agents" [value]="agent.agentId">
+        {{agent.name}} (ID: {{agent.agentId}})
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="!agentId">Agent selection is required</mat-error>
+  </mat-form-field>
+  <div *ngIf="error" class="error">{{error}}</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="assignAgent()" [disabled]="!agentId">Approve</button>
+</mat-dialog-actions>

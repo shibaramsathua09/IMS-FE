@@ -1,0 +1,157 @@
+/* src/app/claims/claims.component.css */
+
+/* Container for the table, similar to policies */
+/* src/app/claims/claims.component.css */
+ 
+/* Container for the table, similar to policies */
+.claims-table-container {
+  width: 100%;
+  max-width: 1000px; /* Adjusted max-width for claims table based on image */
+  margin: 0px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  padding: 25px 35px; /* Added padding to the container itself */
+}
+
+.full-page-content{
+  width: 850px;
+}
+
+.claim-header{
+  display:flex;
+  justify-content: space-between;
+}
+.claim-title{
+  font-size: 2em;
+  font-weight: 700;
+  color: #673ab7;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures rounded corners are visible */
+  }
+  
+  /* Table Headers - Consistent styling with policies */
+  th.mat-header-cell {
+    background-color: #42a5f5;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1em;
+    padding: 18px 15px;
+    text-align: left;
+    border-bottom: none;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  th.mat-header-cell:first-child {
+    border-top-left-radius: 8px;
+  }
+  th.mat-header-cell:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+  /* Table Data Cells - Consistent styling with policies */
+  td.mat-cell {
+    padding: 15px;
+    color: #444;
+    font-size: 0.95em;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  /* Alternating row background for better readability */
+  tr.mat-row:nth-child(even) {
+    background-color: #fcfcfc;
+  }
+  tr.mat-row:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  tr.mat-row:last-child td.mat-cell {
+    border-bottom: none;
+  }
+  
+  /* Status Badges - Similar to policies, but with claim-specific colors */
+  .status-approved {
+    background-color: #e8f5e9; /* Light green */
+    color: #388e3c; /* Dark green */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .status-rejected {
+    background-color: #ffebee; /* Light red */
+    color: #d32f2f; /* Dark red */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .status-pending {
+    background-color: #fff3e0; /* Light orange */
+    color: #f57c00; /* Dark orange */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* No data row */
+  .mat-no-data-row {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .claims-table-container {
+      max-width: 95%;
+      margin: 20px auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .claims-table-container {
+      overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+      padding: 15px 20px;
+    }
+  
+    table {
+      min-width: 600px; /* Ensure table doesn't shrink too much */
+    }
+  
+    th.mat-header-cell, td.mat-cell {
+      padding: 12px 10px;
+      font-size: 0.85em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    th.mat-header-cell, td.mat-cell {
+      padding: 10px 8px;
+      font-size: 0.8em;
+    }
+  }

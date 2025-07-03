@@ -1,0 +1,180 @@
+:root {
+    --primary-color: #007bff;
+    --primary-light: #6aaaff;
+    --primary-dark: #0056b3;
+    --accent-color: #28a745;
+    --warn-color: #dc3545;
+    --background-light: #f8f9fa;
+    --text-dark: #343a40;
+    --text-medium: #6c757d;
+    --border-color: #e9ecef;
+    --card-background: #ffffff;
+    --hover-light: #e2e6ea;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+  }
+ 
+  .submit-claim-wrapper {
+    padding: 30px 40px;
+    max-width: 800px; /* Slightly wider for better layout */
+    margin: 30px auto; /* Add vertical margin */
+    box-sizing: border-box;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-light); /* More pronounced shadow */
+    background-color: var(--card-background);
+  }
+ 
+  .header-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+  }
+ 
+  .header-section .card-title {
+    font-size: 2.2em; /* Larger title */
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    border-bottom: none;
+    font-weight: 700;
+  }
+ 
+  .header-section .card-title::after {
+    display: none; /* Remove pseudo-element from inherited card-title */
+  }
+ 
+  .subtitle {
+    font-size: 1.1em;
+    color: var(--text-medium);
+    margin-top: 5px;
+  }
+ 
+  .claim-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increased spacing between form groups */
+  }
+ 
+  .form-row {
+    display: flex;
+    gap: 20px; /* Spacing between fields in a row */
+    width: 100%;
+  }
+ 
+ 
+  /* Material Form Field Overrides */
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: var(--border-color);
+  }
+ 
+  .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: var(--primary-color);
+  }
+ 
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+ 
+  .mat-form-field-label {
+    color: var(--text-medium);
+  }
+ 
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--primary-color);
+  }
+ 
+  .mat-input-element {
+    color: var(--text-dark);
+  }
+ 
+  .mat-form-field-suffix .mat-icon {
+    color: var(--text-medium); /* Style suffix icons */
+  }
+ 
+  /* File Upload Styling */
+  
+  /* Form Actions */
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 35px; /* More space above buttons */
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color); /* Separator above buttons */
+  }
+ 
+  .form-actions button {
+    height: 52px; /* Slightly taller buttons */
+    padding: 0 30px;
+    font-weight: 600; /* Bolder text */
+    border-radius: 8px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    font-size: 1.05em;
+  }
+ 
+  .form-actions button mat-icon {
+    margin-right: 8px;
+  }
+ 
+  .form-actions button[type="submit"] {
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25); /* More prominent shadow */
+  }
+ 
+  .form-actions button[type="submit"]:hover:not([disabled]) {
+    background-color: blue;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+    transform: translateY(-3px); /* More pronounced lift */
+  }
+ 
+  .form-actions button[type="submit"][disabled] {
+    opacity: 0.5; /* More faded when disabled */
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+ 
+  .form-actions button.mat-stroked-button {
+    border-color: var(--text-medium); /* More subtle border */
+    color: var(--text-medium);
+  }
+ 
+  .form-actions button.mat-stroked-button:hover {
+    background-color: var(--hover-light);
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+    transform: translateY(-2px);
+  }
+ 
+  /* Responsive adjustments for the form */
+  @media (max-width: 768px) {
+    .submit-claim-wrapper {
+      padding: 25px 30px;
+      margin: 20px auto;
+    }
+    .form-row {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .header-section .card-title {
+      font-size: 1.8em;
+    }
+  }
+ 
+  @media (max-width: 480px) {
+    .submit-claim-wrapper {
+      padding: 20px;
+    }
+    .header-section .card-title {
+      font-size: 1.5em;
+    }
+    .subtitle {
+      font-size: 0.95em;
+    }
+    .form-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .form-actions button {
+      width: 100%;
+    }
+  }

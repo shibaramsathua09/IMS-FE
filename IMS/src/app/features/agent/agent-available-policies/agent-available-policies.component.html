@@ -1,0 +1,34 @@
+<mat-card class="available-policies">
+    <h2>Available Policies</h2>
+    <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Policy ID -->
+    <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> AvailablePolicy ID </mat-header-cell>
+    <mat-cell *matCellDef="let policy"> {{ policy.id }} </mat-cell>
+    </ng-container>
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let policy"> {{ policy.name }} </mat-cell>
+    </ng-container>
+    <!-- Coverage Details -->
+    <ng-container matColumnDef="coverageDetails">
+    <mat-header-cell *matHeaderCellDef> Coverage Details </mat-header-cell>
+    <mat-cell *matCellDef="let policy"> {{ policy.coverageDetails }} </mat-cell>
+    </ng-container>
+    <!-- Base Premium -->
+    <ng-container matColumnDef="basePremium">
+    <mat-header-cell *matHeaderCellDef> Base Premium </mat-header-cell>
+    <mat-cell *matCellDef="let policy"> {{ policy.basePremium }} </mat-cell>
+    </ng-container>
+    <!-- Validity Period -->
+    <ng-container matColumnDef="validityPeriod">
+    <mat-header-cell *matHeaderCellDef> Validity Period (Years) </mat-header-cell>
+    <mat-cell *matCellDef="let policy"> {{ policy.validityPeriod }} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!-- Pagination Controls -->
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </mat-card>

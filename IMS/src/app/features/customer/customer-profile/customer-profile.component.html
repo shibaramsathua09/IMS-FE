@@ -1,0 +1,101 @@
+<div class="customer-profile-container">
+  <div class="profile-header">
+    <h1 class="header-title">My Profile</h1>
+  </div>
+
+  <div class="profile-display-section" *ngIf="!isEditing">
+    <div class="profile-details">
+      <div class="detail-group">
+        <span class="detail-label">User Id:</span>
+        <span class="detail-value">{{ user.userId }}</span>
+      </div>
+      <div class="detail-group">
+        <span class="detail-label">Customer Id:</span>
+        <span class="detail-value">{{ user.customerId }}</span>
+      </div>
+      <div class="detail-group">
+        <span class="detail-label">Username:</span>
+        <span class="detail-value">{{ user.username }}</span>
+      </div>
+
+      <div class="detail-group">
+        <span class="detail-label">Name:</span>
+        <span class="detail-value">{{ user.name }}</span>
+      </div>
+      <div class="detail-group">
+        <span class="detail-label">DOB:</span>
+        <span class="detail-value">{{ user.dateOfBirth }}</span>
+      </div>
+      <div class="detail-group">
+        <span class="detail-label">Email:</span>
+        <span class="detail-value">{{ user.email }}</span>
+      </div>
+      <div class="detail-group">
+        <span class="detail-label">Mobile No.:</span>
+        <span class="detail-value">{{ user.phone }}</span>
+      </div>
+      <div class="detail-group detail-group-address">
+        <div class="detail-label-wrapper">
+          <span class="detail-label">Address:</span>
+        </div>
+        <div class="detail-value-wrapper">
+          <span class="detail-value">{{ user.address }}</span>
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="enableEdit()" class="edit-profile-button">
+      <mat-icon>edit</mat-icon> Edit Profile
+    </button>
+  </div>
+  <div class="profile-edit-section" *ngIf="isEditing">
+    <h2 class="edit-section-title">Edit Profile Details</h2>
+    <form [formGroup]="profileForm" class="profile-form">
+  
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="profileForm.controls['name'].hasError('required') && profileForm.controls['name'].touched">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="profileForm.controls['email'].hasError('required') && profileForm.controls['email'].touched">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="profileForm.controls['email'].hasError('email') && profileForm.controls['email'].touched">
+          Enter a valid email address
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Mobile No</mat-label>
+        <input matInput formControlName="phone" placeholder="e.g., 9876543210">
+        <mat-error *ngIf="profileForm.controls['phone'].hasError('required') && profileForm.controls['phone'].touched">
+          Mobile number is required
+        </mat-error>
+        <mat-error *ngIf="profileForm.controls['phone'].hasError('pattern') && profileForm.controls['phone'].touched">
+          Enter a valid 10-digit mobile number
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width-input">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="address" rows="3" placeholder="Enter your full address"></textarea>
+      </mat-form-field>
+  
+      <div class="form-actions">
+        <button mat-flat-button color="primary" (click)="updateProfile()" [disabled]="profileForm.invalid" class="save-button">
+          <mat-icon>save</mat-icon> Save Changes
+        </button>
+        <button mat-button (click)="cancelEdit()" class="cancel-button">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+
+  </div>

@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Confirm Rejection</h2>
+<mat-dialog-content>
+  <p>Are you sure you want to perform this action? This action cannot be undone and the item will no longer be available for approval.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button color="warn" (click)="confirm()">Reject</button>
+</mat-dialog-actions>

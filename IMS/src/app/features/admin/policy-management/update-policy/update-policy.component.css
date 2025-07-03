@@ -1,0 +1,16 @@
+.dialog-content {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form fields */
+    min-width: 350px; /* Adjust min width for readability */
+  }
+ 
+  .full-width {
+    width: 100%;
+  }
+ 
+  mat-dialog-actions {
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* A subtle separator */
+  }

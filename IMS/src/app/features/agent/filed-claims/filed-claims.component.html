@@ -1,0 +1,52 @@
+<mat-card class="filed-claims">
+  <h2>Filed Claims</h2>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Claim ID -->
+    <ng-container matColumnDef="claimId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Claim ID </mat-header-cell>
+      <mat-cell *matCellDef="let claim"> {{ claim.claimId }} </mat-cell>
+    </ng-container>
+
+    <!-- Policy Name -->
+    <ng-container matColumnDef="policyName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Policy Name </mat-header-cell>
+      <mat-cell *matCellDef="let claim"> {{ claim.policyName }} </mat-cell>
+    </ng-container>
+
+    <!-- Claim Amount -->
+    <ng-container matColumnDef="claimAmount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Claim Amount </mat-header-cell>
+      <mat-cell *matCellDef="let claim"> {{ claim.claimAmount | currency:'INR':'symbol-narrow' }} </mat-cell>
+    </ng-container>
+
+    <!-- Status (Styled) -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let claim">
+        <span class="status" [ngClass]="claim.status.toLowerCase()">
+          {{ claim.status }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Customer Name -->
+    <ng-container matColumnDef="customerName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </mat-header-cell>
+      <mat-cell *matCellDef="let claim"> {{ claim.customerName }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  <mat-paginator [length]="totalFiledClaims"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="onPageChange($event)"
+                 aria-label="Select">
+  </mat-paginator>
+
+  <!-- Pagination -->
+</mat-card>

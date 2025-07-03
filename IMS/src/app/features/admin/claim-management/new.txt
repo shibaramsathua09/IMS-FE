@@ -1,0 +1,259 @@
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { tap, catchError } from 'rxjs/operators'; // Import catchError
+import { Observable, of } from 'rxjs'; // Import Observable and of for error handling
+import { AdminService } from '../admin.service'; // Assuming your admin service is here
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClaimStatusResponseDtoForAdmin } from '../dtos/claimStatusResponseDtoForAdmin.dto'; // Imported from your DTOs folder
+import { ApiResponse } from '../../../shared/api-response.interface';
+import { RejectDialogComponent } from '../../../shared/reject-dialog/reject-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+
+// Define your ApiResponse interface, this is crucial for handling backend responses.
+// Adjust the properties (isSuccess, message, data) to match your actual backend API response structure.
+
+
+@Component({
+  selector: 'app-claim-management',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatTableModule,
+    MatCardModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    // MatSnackBarModule should be imported in your NgModule if not standalone.
+    // If this component is truly standalone and not importing a module that provides MatSnackBar,
+    // you might need to ensure MatSnackBarModule is imported directly here or provided.
+  ],
+  templateUrl: './claim-management.component.html',
+  styleUrls: ['./claim-management.component.css']
+})
+export class ClaimManagementComponent implements OnInit, AfterViewInit {
+  filteredClaims: any[] = [];
+  paginatedClaims: any[] = [];
+  totalClaims: number = 0;
+  allClaims: any[] = []; // Consider if 'allClaims' is necessary with server-side pagination
+  currentPage: number = 0;
+  dataSource = new MatTableDataSource<ClaimStatusResponseDtoForAdmin>([]);
+  displayedColumns: string[] = ['sno','claimId', 'policyName', 'claimAmount', 'status', 'customerName', 'agentName', 'actions'];
+
+  searchTerm: string = ''; // Used for filtering by status (or other fields if desired)
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private adminService: AdminService, private snackBar: MatSnackBar,private dialog:MatDialog) {}
+
+  ngOnInit() {
+    this.fetchClaims();
+  
+  }
+
+
+  filterClaimsByStatus() {
+    const term = this.searchTerm.toLowerCase().trim();
+    console.log('Search term:', term);
+    console.log(this.allClaims.length);
+    if (term) {
+      
+      this.filteredClaims = this.allClaims.filter((claim) =>{
+        console.log("Checking claim by status");
+       return claim.status?.toLowerCase().includes(term);
+      }
+      );
+      
+
+    } else {
+      this.filteredClaims = [...this.allClaims];
+    }
+    this.currentPage = 0;
+    this.paginatedClaims = [...this.filteredClaims]; 
+  }
+
+  ngAfterViewInit() {
+    // this.dataSource.paginator = this.paginator;
+
+    // this.dataSource.sort = this.sort;
+
+    // Listen for paginator changes to re-fetch data for the new page
+
+    this.paginator.page
+      .pipe(
+        tap(() =>
+          this.fetchClaims(
+            this.paginator.pageIndex + 1,
+            this.paginator.pageSize
+          )
+        )
+      )
+      .subscribe();
+
+   
+
+    this.fetchClaims(
+      this.paginator.pageIndex + 1,
+      this.paginator.pageSize
+    );
+  }
+  fetchClaims(page: number = 1, size: number = 10, searchTerm: string = ''): void {
+    
+    this.adminService.getAllClaims(page, size).pipe(
+      tap((response: ApiResponse<{ items: ClaimStatusResponseDtoForAdmin[], totalCount: number }>) => {
+        if (response && response.isSuccess && response.data) {
+          this.dataSource.data = response.data.items;
+          this.totalClaims = response.data.totalCount;
+        } else {
+          this.dataSource.data = [];
+          this.totalClaims = 0;
+          this.snackBar.open(`Failed to fetch claims: ${response?.message || 'Unknown error'}`, 'Close', {
+            duration: 3000, panelClass: ['snackbar-error']
+          });
+        }
+      }),
+      catchError(error => {
+        console.error('Error fetching claims:', error);
+        this.dataSource.data = [];
+        this.totalClaims = 0;
+        this.snackBar.open('An error occurred while fetching claims.', 'Close', {
+          duration: 3000, panelClass: ['snackbar-error']
+        });
+        // Return a safe observable to prevent the stream from completing prematurely
+        return of({} as ApiResponse<{ items: ClaimStatusResponseDtoForAdmin[], totalCount: number }>);
+      })
+    ).subscribe();
+  }
+
+  // This method will be called when the search input changes
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.searchTerm = filterValue; // Update searchTerm
+    this.dataSource.filter = filterValue.trim().toLowerCase(); 
+
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  
+  onPageChange(event: PageEvent): void {
+   
+  }
+
+  /**
+   * Updates the status of a specific claim by calling the backend API.
+   * After a successful update, it refreshes the data.
+   * @param claim The claim object to update.
+   * @param newStatus The new status to set ('Approved' or 'Rejected').
+   */
+  updateStatus(claim: ClaimStatusResponseDtoForAdmin, newStatus: string) {
+    let apiCall: Observable<ApiResponse<boolean>>;
+ 
+    if (newStatus === 'Approved') {
+      apiCall = this.adminService.approveClaim(claim.claimId);
+ 
+      // Execute the API call
+      apiCall.pipe(
+        tap((response: ApiResponse<boolean>) => {
+          if (response.isSuccess) {
+            claim.status = newStatus;
+            this.snackBar.open(`Claim ${claim.claimId} ${newStatus} successfully!`, 'Close', {
+              duration: 3000,
+              panelClass: ['snackbar-success']
+            });
+            this.fetchClaims(this.paginator.pageIndex + 1, this.paginator.pageSize, this.searchTerm);
+          } else {
+            this.snackBar.open(`Failed to ${newStatus.toLowerCase()} claim ${claim.claimId}: ${response.message || 'Unknown error'}`, 'Close', {
+              duration: 5000,
+              panelClass: ['snackbar-error']
+            });
+            console.error(`API Error for claim ${claim.claimId}: ${response.message}`);
+          }
+        }),
+        catchError(error => {
+          this.snackBar.open(`An error occurred while trying to ${newStatus.toLowerCase()} claim ${claim.claimId}.`, 'Close', {
+            duration: 5000,
+            panelClass: ['snackbar-error']
+          });
+          console.error(`HTTP Error during ${newStatus.toLowerCase()} claim ${claim.claimId}:`, error);
+          return of({ isSuccess: false, message: 'Network or server error', data: false } as ApiResponse<boolean>);
+        })
+      ).subscribe();
+    }
+    else if (newStatus === 'Rejected') {
+      const dialogRef = this.dialog.open(RejectDialogComponent);
+      dialogRef.afterClosed().subscribe(confirmed => {
+        if (confirmed) {
+          console.log('Claim rejection confirmed for claim:', claim.claimId);
+ 
+          const apiCall = this.adminService.rejectClaim(claim.claimId);
+ 
+          apiCall.pipe(
+            tap((response: ApiResponse<boolean>) => {
+              if (response.isSuccess) {
+                claim.status = newStatus;
+                this.snackBar.open(`Claim ${claim.claimId} ${newStatus} successfully!`, 'Close', {
+                  duration: 3000,
+                  panelClass: ['snackbar-success']
+                });
+                this.fetchClaims(this.paginator.pageIndex + 1, this.paginator.pageSize, this.searchTerm);
+              } else {
+                this.snackBar.open(`Failed to ${newStatus.toLowerCase()} claim ${claim.claimId}: ${response.message || 'Unknown error'}`, 'Close', {
+                  duration: 5000,
+                  panelClass: ['snackbar-error']
+                });
+                console.error(`API Error for claim ${claim.claimId}: ${response.message}`);
+              }
+            }),
+            catchError(error => {
+              this.snackBar.open(`An error occurred while trying to ${newStatus.toLowerCase()} claim ${claim.claimId}.`, 'Close', {
+                duration: 5000,
+                panelClass: ['snackbar-error']
+              });
+              console.error(`HTTP Error during ${newStatus.toLowerCase()} claim ${claim.claimId}:`, error);
+              return of({ isSuccess: false, message: 'Network or server error', data: false } as ApiResponse<boolean>);
+            })
+          ).subscribe();
+        } else {
+          this.snackBar.open('Claim rejection cancelled.', 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-info']
+          });
+        }
+      });
+    }
+    else {
+      console.error('Invalid status provided:', newStatus);
+      this.snackBar.open('Invalid status action.', 'Close', {
+        duration: 3000,
+        panelClass: ['snackbar-error']
+      });
+    }
+  }
+  /**
+   * Returns CSS classes based on claim status for styling.
+   * @param status The status of the claim.
+   * @returns An object mapping CSS class names to boolean values.
+   */
+  getStatusClass(status: string) {
+    return {
+      'text-success': status === 'Approved',
+      'text-warning': status === 'Pending',
+      'text-danger': status === 'Rejected'
+    };
+  }
+}

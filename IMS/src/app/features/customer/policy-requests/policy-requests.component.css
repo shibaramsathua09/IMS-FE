@@ -1,0 +1,523 @@
+:host {
+    display: block;
+    padding: 20px;
+  }
+   
+  .policy-card {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    color: #34495E;
+  }
+
+  .policy-request-header{
+    display:flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, #f8f9fa, #eef1f6);
+  }
+    .full-page-content{
+      width: 950px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+     
+  .card-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #2C5F88;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+   
+  .policy-list-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 15px;
+    border: 1px solid #CFD8DC;
+  }
+   
+  .policy-list {
+    flex-grow: 1;
+    padding-top: 0;
+  }
+   
+  .policy-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-out;
+    cursor: pointer;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    color: #34495E;
+  }
+   
+  .policy-item:last-child {
+    border-bottom: none;
+  }
+   
+  .policy-item:hover {
+    background-color: #F8F9FA;
+    transform: translateY(-2px);
+  }
+   
+  .policy-icon {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    color: #FFFFFF;
+    background-color: #5FA8D3;
+    border-radius: 50%;
+    padding: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+   
+  .policy-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+   
+  .policy-details h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2C5F88;
+  }
+   
+  .details-line {
+    font-size: 0.9em;
+    color: #607D8B;
+  }
+   
+  .dates-line {
+    display: flex;
+    align-items: center;
+    font-size: 0.85em;
+    color: #607D8B;
+  }
+   
+  .dates-line .date-icon {
+    font-size: 16px;
+    margin-right: 8px;
+    color: #607D8B;
+  }
+   
+  .policy-actions {
+    display: flex;
+    align-items: center;
+    /* Removed gap as there's only one item now, adjust if you add more */
+    /* gap: 15px; */
+    flex-shrink: 0;
+  }
+   
+  .status-chip {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 80px;
+    text-align: center;
+    /* Added margin-left if needed to push chip away from details */
+    /* margin-left: auto; */
+  }
+   
+  .status-pending {
+    background-color: #F1C40F;
+    color: #34495E;
+  }
+   
+  .status-approved {
+    background-color: #28A745;
+    color: white;
+  }
+   
+  .status-rejected {
+    background-color: #DC3545;
+    color: white;
+  }
+   
+  .status-draft {
+    background-color: #6C757D;
+    color: white;
+  }
+   
+  /* REMOVED: .view-details-btn styles */
+   
+  .mat-divider {
+    margin: 10px 0;
+    border-top-color: #CFD8DC;
+  }
+   
+  .mat-paginator {
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #CFD8DC;
+    padding: 10px 15px;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #34495E;
+  }
+   
+  .mat-paginator-page-size,
+  .mat-paginator-range-label,
+  .mat-paginator-navigation-next,
+  .mat-paginator-navigation-previous,
+  .mat-paginator-navigation-first,
+  .mat-paginator-navigation-last {
+    color: #34495E !important;
+  }
+   
+  .mat-paginator-icon {
+    fill: #34495E !important;
+  }
+   
+  .empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 1px dashed #CFD8DC;
+    margin-top: 30px;
+    color: #34495E;
+  }
+   
+  .empty-icon {
+    font-size: 60px;
+    width: 60px;
+    height: 60px;
+    color: #5FA8D3;
+    margin-bottom: 20px;
+  }
+   
+  .empty-message {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #2C5F88;
+    margin-bottom: 10px;
+  }
+   
+  .empty-sub-message {
+    font-size: 0.95em;
+    color: #607D8B;
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+   
+  .explore-button {
+    padding: 12px 25px;
+    font-size: 1.05em;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: #2C5F88;
+    color: #FFFFFF;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-out;
+  }
+   
+  .explore-button:hover {
+    background-color: #3A70A0;
+    transform: scale(1.03);
+  }
+   
+  .explore-button mat-icon {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+   
+  .mat-sidenav-content {
+    margin-left: 10px !important;
+  }
+   
+   
+  @media (max-width: 960px) {
+    .policy-card {
+      padding: 25px;
+    }
+   
+    .card-title {
+      font-size: 1.6em;
+      margin-bottom: 20px;
+    }
+   
+    .policy-list-container {
+      padding: 10px;
+    }
+   
+    .policy-item {
+      padding: 12px 8px;
+    }
+   
+    .policy-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      margin-right: 15px;
+      padding: 6px;
+    }
+   
+    .policy-details h3 {
+      font-size: 1em;
+    }
+   
+    .details-line,
+    .dates-line {
+      font-size: 0.85em;
+    }
+   
+    .dates-line .date-icon {
+      font-size: 15px;
+      margin-right: 6px;
+    }
+   
+    .policy-actions {
+      gap: 10px;
+    }
+   
+    .status-chip {
+      padding: 5px 10px;
+      font-size: 0.75em;
+      min-width: 70px;
+    }
+   
+    /* REMOVED: .view-details-btn media query styles */
+   
+    .mat-paginator {
+      padding: 8px 10px;
+    }
+   
+    .empty-state {
+      padding: 40px 15px;
+    }
+   
+    .empty-icon {
+      font-size: 50px;
+      width: 50px;
+      height: 50px;
+    }
+   
+    .empty-message {
+      font-size: 1.2em;
+    }
+   
+    .empty-sub-message {
+      font-size: 0.9em;
+    }
+   
+    .explore-button {
+      padding: 10px 20px;
+      font-size: 0.95em;
+    }
+  }
+   
+  @media (max-width: 768px) {
+    .policy-card {
+      padding: 20px 15px;
+      margin: 15px auto;
+    }
+   
+    .card-title {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+   
+    .policy-list-container {
+      padding: 8px;
+    }
+   
+    .policy-item {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 0;
+      gap: 8px;
+    }
+   
+    .policy-icon {
+      margin-right: 0;
+      margin-bottom: 8px;
+      font-size: 26px;
+      width: 26px;
+      height: 26px;
+      padding: 5px;
+    }
+   
+    .policy-details {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+   
+    .policy-details h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+    }
+   
+    .dates-line {
+      font-size: 0.8em;
+    }
+   
+    .policy-actions {
+      width: 100%;
+      justify-content: flex-end; /* Align the status chip to the right */
+      gap: 5px;
+      margin-top: 5px;
+    }
+   
+    .status-chip {
+      /* flex-grow: 1; REMOVED this, let it size naturally or set min-width */
+      text-align: center; /* Center text within the chip */
+      min-width: unset; /* Reset min-width from larger screens */
+    }
+   
+    /* REMOVED: .view-details-btn media query styles */
+   
+    .mat-paginator {
+      padding: 6px 8px;
+      font-size: 0.8em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+   
+    .mat-paginator-range-label,
+    .mat-paginator-page-size {
+      margin: 5px 0 !important;
+    }
+   
+    .empty-state {
+      padding: 30px 10px;
+    }
+   
+    .empty-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+    }
+   
+    .empty-message {
+      font-size: 1.1em;
+    }
+   
+    .empty-sub-message {
+      font-size: 0.85em;
+    }
+   
+    .explore-button {
+      padding: 9px 18px;
+      font-size: 0.9em;
+    }
+  }
+   
+  @media (max-width: 480px) {
+    .policy-card {
+      padding: 15px 10px;
+    }
+   
+    .card-title {
+      font-size: 1.3em;
+    }
+   
+    .policy-list-container {
+      padding: 5px;
+    }
+   
+    .policy-item {
+      padding: 10px 0;
+    }
+   
+    .policy-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      padding: 4px;
+    }
+   
+    .policy-details h3 {
+      font-size: 0.95em;
+    }
+   
+    .details-line,
+    .dates-line {
+      font-size: 0.8em;
+    }
+   
+    .policy-actions {
+      flex-direction: row; /* Keep in a row if only status chip */
+      justify-content: flex-end; /* Align to the right */
+      gap: 8px;
+    }
+   
+    .status-chip {
+      width: auto; /* Let content dictate width */
+      max-width: unset;
+      text-align: center;
+    }
+   
+    /* REMOVED: .view-details-btn media query styles */
+   
+    .mat-paginator {
+      font-size: 0.75em;
+      padding: 5px;
+    }
+   
+    .empty-state {
+      padding: 25px 5px;
+    }
+   
+    .empty-icon {
+      font-size: 35px;
+      width: 35px;
+      height: 35px;
+    }
+   
+    .empty-message {
+      font-size: 1em;
+    }
+   
+    .empty-sub-message {
+      font-size: 0.8em;
+    }
+   
+    .explore-button {
+      padding: 8px 15px;
+      font-size: 0.85em;
+    }
+  }
+
+  .status-chip {
+    padding: 6px 9px;
+    border-radius: 20px; /* More rounded pill shape */
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 72px; /* Slightly wider for better text fit */
+    text-align: center;
+    display: inline-flex; /* Use flex for alignment if content needs it */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }

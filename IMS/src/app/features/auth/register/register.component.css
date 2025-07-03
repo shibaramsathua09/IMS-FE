@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+ 
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+/* Stylish Page Background */
+body {
+  min-height:200vh;
+  display: flex;     /* Also contributes to layout, good for centering content */
+  align-items: center;
+  /* justify-content: center; */
+ 
+ 
+  background-image: url('image.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+ 
+}
+ 
+/* Main Registration Card */
+.registration-card {
+  max-width: 600px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.registration-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
+}
+ 
+/* Card Title */
+.registration-card mat-card-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+ 
+.registration-card mat-card-title::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 50px;
+  background-color: #007bff;
+  margin: 8px auto 0;
+  border-radius: 4px;
+}
+ 
+/* Form Fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+ 
+/* Stylish Input Fields */
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #f5f8fa;
+  border-radius: 6px;
+  padding-left: 10px;
+}
+ 
+.mat-form-field-appearance-fill.mat-form-field-invalid .mat-form-field-flex {
+  background-color: #fdecea;
+}
+ 
+/* Input Label */
+mat-label {
+  font-weight: 600;
+  color: #374151;
+}
+ 
+/* Hint Text */
+mat-hint {
+  font-size: 12px;
+  color: #6b7280;
+}
+ 
+/* Error Styling */
+mat-error {
+  font-size: 13px;
+  color: #d32f2f;
+  margin-top: 4px;
+}
+ 
+/* Submit Button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 114, 255, 0.3);
+}
+ 
+button[type="submit"]:hover:not([disabled]) {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 114, 255, 0.4);
+}
+ 
+button[disabled] {
+  background-color: #cfd8dc !important;
+  color: #777;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+ 
+/* Responsive Layout */
+@media (max-width: 600px) {
+  .registration-card {
+    margin: 20px;
+    padding: 20px;
+  }
+ 
+  .registration-card mat-card-title {
+    font-size: 24px;
+  }
+ 
+  button[type="submit"] {
+    font-size: 15px;
+  }
+}
+ 

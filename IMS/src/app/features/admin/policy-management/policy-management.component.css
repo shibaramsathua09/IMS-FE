@@ -1,0 +1,73 @@
+.policy-management-container {
+  width: 100%;
+    max-width: 900px;
+    padding:20px;
+    margin: 10px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+}
+ 
+.policy-nav-links {
+  display: flex; /* Makes the buttons appear in a row */
+  flex-wrap: wrap; /* Allows buttons to wrap to the next line on smaller screens */
+  gap: 10px; /* Space between buttons */
+  padding: 15px 20px; /* Padding around the navigation buttons */
+  background-color: #e0e0e0; /* Light background for the navigation bar */
+  border-bottom: 1px solid #ccc; /* Separator from content */
+  justify-content: flex-start; /* Align items to the start */
+  align-items: center; /* Vertically center items */
+  flex-shrink: 0; /* Prevent these links from shrinking */
+}
+ 
+.policy-nav-links .mat-mdc-button,
+.policy-nav-links .mat-mdc-raised-button {
+  min-width: unset; /* Allow buttons to size based on content */
+  padding: 8px 16px;
+}
+ 
+/* Style for active navigation button */
+.policy-nav-links .mat-button.active-button,
+.policy-nav-links .mat-mdc-button.active-button {
+  background-color: #3f51b5; /* Primary color background */
+  color: white; /* White text for active button */
+  font-weight: 500;
+}
+ 
+.policy-nav-links .mat-button.active-button .mat-icon,
+.policy-nav-links .mat-mdc-button.active-button .mat-icon {
+  color: white; /* Ensure icon is white when button is active */
+}
+ 
+.policy-content-area {
+  flex-grow: 1; /* Allows the content area to take up remaining vertical space */
+  padding: 20px;
+  overflow-y: auto; /* Adds vertical scroll if content overflows */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  /*
+  Crucial for static height: Set a minimum height for the content area.
+  Adjust this value based on the expected maximum content height,
+  or the height you want it to always occupy.
+  */
+  min-height: 400px; /* Example: Ensure it's at least 400px tall */
+  /* Alternatively, if you want it to fill all available space below the nav, and then scroll: */
+  /* height: 100%; */ /* This would make it fill the remaining space of its parent (policy-management-container) */
+}
+ 
+ 
+/* Optional: Adjust for smaller screens */
+@media (max-width: 599px) {
+  .policy-nav-links {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    align-items: stretch; /* Make buttons fill the width */
+  }
+ 
+  .policy-nav-links .mat-button,
+  .policy-nav-links .mat-mdc-button {
+    width: 100%; /* Make buttons full width */
+    margin-bottom: 5px; /* Add some vertical spacing */
+  }
+}
+ 
