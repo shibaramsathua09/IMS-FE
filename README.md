@@ -15,7 +15,7 @@ This project demonstrates the implementation of all use cases using the followin
 
 - All use cases of the project have been successfully completed.
 - The backend is built using ASP.NET Web API, providing robust and scalable RESTful services.
-- MySQL is used for data storage, ensuring reliable and efficient data management.
+- SQL is used for data storage, ensuring reliable and efficient data management.
 - C# is the primary programming language, leveraging the Code First approach for database modeling.
 - The frontend is developed using Angular, offering a dynamic and responsive user interface.
 - Material UI is utilized in Angular for consistent and modern UI styling.
