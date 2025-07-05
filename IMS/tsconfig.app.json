@@ -1,11 +1,15 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
+  /*This inherits all settings from your base tsconfig.json, keeping your configuration DRY and consistent.*/
   "extends": "./tsconfig.json",
+  /*outDir: Overrides the base output directory to compile only the app files into ./out-tsc/app.
+types: []: Prevents automatic inclusion of type definitions (like node, jest, etc.), ensuring only explicitly imported types are used.*/
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "types": []
   },
+  //Specifies that only main.ts should be included directly. This is the entry point of your Angular app
   "files": [
     "src/main.ts"
   ],
