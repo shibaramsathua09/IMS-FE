@@ -11,7 +11,7 @@ namespace IMSIntrim.Infrastructure.Persistance.Configurations
             builder.HasKey(p => p.AvailablePolicyId);
             builder.Property(p => p.Name).IsRequired();
             builder.Property(p => p.BasePremium).IsRequired();
-            builder.Property(p => p.BasePremium).HasPrecision(10,2);
+            builder.Property(p => p.BasePremium).HasPrecision(10,2);//total digits:10 and 2 digits after decimal point
 
             builder.Property(p => p.CoverageDetails).IsRequired();
         }

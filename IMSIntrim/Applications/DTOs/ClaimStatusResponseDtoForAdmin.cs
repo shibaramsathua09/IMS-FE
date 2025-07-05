@@ -14,6 +14,8 @@
         public int? AgentId { get; set; }
 
         public required string CustomerName { get; set; }
-        public string? AgentName { get; set; } // Nullable in case it's not yet assigned
+
+        // Nullable in case it's not yet assigned
+        public string? AgentName { get; set; } 
     }
 }

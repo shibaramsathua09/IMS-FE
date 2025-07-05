@@ -6,7 +6,7 @@ namespace IMSIntrim.Applications.DTOs
 {
     public class AgentRegisterRequestDto
     {
-
+        //this is agent register request dto by which we can add agent or we can register agent
         [Required(ErrorMessage = "Username is required.")]
         [RegularExpression(@"^[a-zA-Z][a-zA-Z0-9_]*$", ErrorMessage = "Username must start with a letter and can only contain letters, numbers, and underscores.")]
         public required string UserName {  get; set; }

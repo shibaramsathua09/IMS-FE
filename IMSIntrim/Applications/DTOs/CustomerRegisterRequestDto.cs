@@ -6,7 +6,7 @@ namespace IMSIntrim.Applications.DTOs
 {
     public class CustomerRegisterRequestDto
     {
-
+        //this dto is used to register the Customer like registration page for customer
         [Required(ErrorMessage = "Username is required.")]
         [RegularExpression(@"^[a-zA-Z][a-zA-Z0-9_]*$", ErrorMessage = "Username must start with a letter and can only contain letters, numbers, and underscores.")]
         public required string Username { get; set; }

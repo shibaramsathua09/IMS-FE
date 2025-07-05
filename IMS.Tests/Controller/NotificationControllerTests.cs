@@ -40,26 +40,4 @@ public class NotificationsControllerTests
         var okResult = Assert.IsType<OkObjectResult>(result);
         Assert.Equal(response, okResult.Value);
     }
-
-    //[Fact]
-    //public async Task GetCustomerNotifications_ReturnsOk_WhenSuccess()
-    //{
-    //    var dto = new NotificationResponseDto
-    //    {
-
-    //        Message = "Claim has been filed successfully.",
-    //        CreatedAt = System.DateTime.UtcNow
-
-    //    };
-
-    //    var response = OperationResult<IEnumerable<NotificationResponseDto>>.Success(
-    //        new List<NotificationResponseDto> { dto });
-
-    //    _mockNotificationService.Setup(s => s.GetMyNotificationsAsync()).ReturnsAsync(response);
-
-    //    var result = await _controller.GetCustomerNotifications();
-
-    //    var okResult = Assert.IsType<OkObjectResult>(result);
-    //    Assert.Equal(response, okResult.Value);
-    //}
 }

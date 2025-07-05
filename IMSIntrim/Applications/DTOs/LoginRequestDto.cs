@@ -6,6 +6,7 @@ namespace IMSIntrim.Applications.DTOs
 {
     public class LoginRequestDto
     {
+        //this is for login validation in the dto
         [Required(ErrorMessage = "Username is required.")]
         [RegularExpression(@"^[a-zA-Z][a-zA-Z0-9_]*$", ErrorMessage = "Username must start with a letter and can only contain letters, numbers, and underscores.")]
         public required string Username { get; set; }

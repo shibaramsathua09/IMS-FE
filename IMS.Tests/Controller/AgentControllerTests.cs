@@ -17,7 +17,7 @@ public class AgentControllerTests
     public AgentControllerTests()
     {
         _mockAgentService = new Mock<IAgentServices>();
-        _controller = new AgentController(null, _mockAgentService.Object);
+        _controller = new AgentController(_mockAgentService.Object);
     }
 
     [Fact]

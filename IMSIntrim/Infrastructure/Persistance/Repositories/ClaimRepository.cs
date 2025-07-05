@@ -2,6 +2,8 @@
 using IMSIntrim.Domain.Models;
 using IMSIntrim.Shared.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 
 namespace IMSIntrim.Infrastructure.Persistance.Repositories
 {
@@ -15,7 +17,10 @@ namespace IMSIntrim.Infrastructure.Persistance.Repositories
 
         public async Task<OperationResult<IEnumerable<Claim>>> GetAllAsync()
         {
+
             //var claim = await _context.Claims.Include(p=>p.Policy).ThenInclude(ap=>ap.AvailablePolicy).ToListAsync();
+//            Include() is used to load related data(navigation properties) to avoid lazy loading or multiple queries.
+//            ThenInclude() is used to go deeper into nested relationships.
             var claims = await _context.Claims
     .Include(c => c.Customer)
     .Include(c => c.Agent)

@@ -16,7 +16,6 @@ namespace IMSIntrim.Infrastructure.Persistance.Repositories
         public async Task<OperationResult<IEnumerable<Agent>>> GetAllAsync()
         {
 
-            // var agent= await _context.Agents.ToListAsync();
             var agents = await _context.Agents
             .Include(a => a.User)
             .ToListAsync();

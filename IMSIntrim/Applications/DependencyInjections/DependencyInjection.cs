@@ -14,14 +14,11 @@ namespace IMSIntrim.Applications.DependencyInjections
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IJwtService,JwtService>();
-            //services.AddScoped<IAuthService, AuthServices>();
+            services.AddScoped<IJwtService,JwtService>();     
             services.AddScoped<ICustomerServices, CustomerServices>();
             services.AddScoped<IAgentServices, AgentServices>();
-            //services.AddScoped<IAdminServices, AdminServices>();
             services.AddScoped<IPasswordHasherService, PasswordHasherService>();
             services.AddScoped<ITokenService, TokenService>();
-            
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IAgentRepository, AgentRepository>();

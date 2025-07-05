@@ -5,6 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IMSIntrim.Infrastructure.Persistance.Repositories
 {
+    /*Eager loading is a concept in Entity Framework (EF)
+     * where related data is loaded from the database at the same time as the main entity.
+     Now, EF will generate a SQL query that joins the Customers and Users tables and loads everything in one go.
+     */
+    /*Lazy loading is a technique where related data is not loaded from the database until 
+     * it is accessed in your code. */
     public class CustomerRepository : ICustomerRepository
     {
         private readonly InsuranceDbContext _context; 
@@ -15,6 +21,9 @@ namespace IMSIntrim.Infrastructure.Persistance.Repositories
 
         public async Task<OperationResult<IEnumerable<Customer>>> GetAllAsync()
         {
+            /*_context.Customers: Refers to the Customers table in your database.
+            .Include(c => c.User): Eagerly loads the related User entity for each customer. This is useful when Customer has a navigation property like public User User { get; set; }.
+            .ToListAsync(): Executes the query asynchronously and returns the result as a list.*/
             //var customer = await _context.Customers.ToListAsync();
             var customers = await _context.Customers
             .Include(c => c.User)

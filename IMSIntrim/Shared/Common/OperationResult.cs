@@ -1,5 +1,8 @@
 ﻿namespace IMSIntrim.Shared.Common
 {
+    //this class is a generic wrappe for returning results from operations 
+    //commonly used in buisness logic layers or services layer.
+    /*It allows flexibility to return any data type display any data type*/
     public class OperationResult<T>
     {
         public bool IsSuccess { get; private set; }
@@ -28,7 +31,6 @@
         public static OperationResult<T> Failure(string message)
         {
             return new OperationResult<T>(false, message, default(T));
-            //return new OperationResult<T>(false, message);
         }
     }
 }

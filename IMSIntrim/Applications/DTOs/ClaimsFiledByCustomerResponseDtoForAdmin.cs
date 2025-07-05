@@ -6,7 +6,6 @@
         public required string PolicyName { get; set; }
         public decimal ClaimAmount { get; set; }
         public required string Status { get; set; }
-      
         public int? AgentId { get; set; }
     }
 }

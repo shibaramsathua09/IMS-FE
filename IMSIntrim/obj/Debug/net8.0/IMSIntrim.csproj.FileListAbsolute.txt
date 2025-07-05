@@ -2045,3 +2045,4 @@ C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim
 C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\obj\Debug\net8.0\IMSIntrim.pdb
 C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\obj\Debug\net8.0\IMSIntrim.genruntimeconfig.cache
 C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\obj\Debug\net8.0\ref\IMSIntrim.dll
+C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\obj\Debug\net8.0\IMSIntrim.sourcelink.json

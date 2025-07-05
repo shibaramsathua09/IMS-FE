@@ -7,7 +7,6 @@
         public required string CustomerName { get; set; }
         public required string AvailablePolicyName { get; set; }
        // public int CustomerId { get; set; }
-
         
         public required string Status { get; set; } 
         public DateTime RequestedOn { get; set; }

@@ -25,7 +25,6 @@ namespace IMSIntrim.Application.Services
         private readonly IPasswordHasherService _passwordHasher;
         private readonly IAuthServices _authService;
         private readonly IMapper _mapper;
-        //private readonly ILogger<AgentServices> _logger;
         private readonly INotificationRepository _notificationRepo;
         private readonly ITokenService _tokenService;
 
@@ -42,12 +41,9 @@ namespace IMSIntrim.Application.Services
             IRoleRepository roleRepository,
             IUserRoleRepository userRoleRepository,
             IAgentRepository agentRepository,
-           INotificationRepository notificationRepository,
-           ITokenService tokenService,
-       //    ITokenService tokenService,
-          // ILogger<AdminService> logger,
-
-           IMapper mapper
+            INotificationRepository notificationRepository,
+            ITokenService tokenService,
+            IMapper mapper
             )
         {
             _customerRepo = customerRepo;
@@ -65,11 +61,12 @@ namespace IMSIntrim.Application.Services
             _notificationRepo = notificationRepository;
             _mapper = mapper;
             _tokenService = tokenService;
-            //_logger = logger;
 
         }
+        //this for addAgent
         public async Task<OperationResult<AgentRegisterResponseDto>> AddAgentAsync(AgentRegisterRequestDto dto)
         {
+            //we are getting the 
             var existingUser = await _userRepo.GetByUsernameAsync(dto.UserName);
             if (!existingUser.IsSuccess)
             {
@@ -122,11 +119,6 @@ namespace IMSIntrim.Application.Services
             return OperationResult<AgentRegisterResponseDto>.Success(new AgentRegisterResponseDto { Message = "Agent added successfully" });
 
         }
-
-        //public Task<IActionResult> DeleteAgent(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
 
         public async Task<OperationResult<AgentProfileResponseDto>> GetAgentByIdAsync(int agentId)

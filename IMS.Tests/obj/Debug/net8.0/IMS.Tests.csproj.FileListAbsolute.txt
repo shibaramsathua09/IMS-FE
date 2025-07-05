@@ -1771,3 +1771,4 @@ C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim
 C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMS.Tests\obj\Debug\net8.0\IMS.Tests.pdb
 C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMS.Tests\obj\Debug\net8.0\IMS.Tests.genruntimeconfig.cache
 C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMS.Tests\obj\Debug\net8.0\ref\IMS.Tests.dll
+C:\Learning\Internship Project IMS\IMSIntrim final\IMSIntrim\IMSIntrim\IMSIntrim\IMSIntrim\IMS.Tests\obj\Debug\net8.0\IMS.Tests.sourcelink.json
