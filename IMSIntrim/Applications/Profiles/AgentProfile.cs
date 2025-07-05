@@ -5,6 +5,22 @@ namespace IMSIntrim.Applications.Profiles
 {
     public class AgentProfile : Profile
     {
+    //In AutoMapper, a Profile is where you define mapping rules.
+    /*ForMember(...)
+This method is used to configure how a specific destination property should be mapped from the source object.
+dest => dest.CustomerEmail: Refers to the CustomerEmail property in the destination DTO (AgentAssignedPolicyResponseDto).
+opt => opt.MapFrom(...): Specifies how to get the value for CustomerEmail.
+src => src.Customer.Email: Tells AutoMapper to take the Email property from the nested Customer object in the source model (Policy).
+So, this line maps:
+
+Policy.Customer.Email → AgentAssignedPolicyResponseDto.CustomerEmail
+✅ Second Line
+
+Maps the Phone property in the DTO from the Customer.Phone in the domain model.
+So, this line maps:
+
+Policy.Customer.Phone → AgentAssignedPolicyResponseDto.Phone
+*/
         public AgentProfile() {
             //CreateMap<Agent, AgentProfileResponseDto>().ReverseMap();
             CreateMap<Agent, AgentProfileResponseDto>()
