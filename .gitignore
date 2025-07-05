@@ -5,9 +5,6 @@
 *.sln.docstates
 
 # Build results
-bin/
-obj/
-out/
 
 # NuGet packages
 *.nupkg
