@@ -1,6 +1,8 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
+  /*This configuration emphasizes strict type safety, modern JavaScript features, and optimized Angular compilation. 
+  It's great for catching bugs early and maintaining high code quality.*/
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
