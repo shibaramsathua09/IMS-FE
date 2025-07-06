@@ -198,6 +198,15 @@ export const routes: Routes = [
         path: 'agent',
         component: AgentLayoutComponent,
         canActivate:[AuthGuard],
+      /*AuthGuard is a special service in Angular that controls access to routes based on certain conditions—usually 
+      whether the user is logged in or has the right permissions.
+      User tries to go to /admin.
+Angular runs AuthGuard.canActivate().
+The guard checks:
+Is the user logged in?
+Does the user have the 'ADMIN' role?
+If both are true → access is granted.
+If not → user is redirected (e.g., to /login or /unauthorized).*/
         data: { roles: ['AGENT'] },
         children: [
 
