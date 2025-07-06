@@ -19,11 +19,18 @@ export interface CurrentUser {
 })
 export class AuthService { // <--- RENAMED FROM LoginService
 
+  /*BehaviorSubject holds the current user state.
+currentUser$ is an observable that components can subscribe to for real-time updates.*/
   private readonly currentUserSubject: BehaviorSubject<CurrentUser | null> = new BehaviorSubject<CurrentUser | null>(null);
   public currentUser$: Observable<CurrentUser | null> = this.currentUserSubject.asObservable();
+  /*Tracks whether the authentication status is ready (e.g., after login or app initialization).*/
   private readonly _authStatusReady = new BehaviorSubject<boolean>(false);
   public authStatusReady$ = this._authStatusReady.asObservable();
 
+
+  /*On app start, it checks if a role is stored in localStorage.
+If found, it sets the current user.
+If not, it fetches the role from the backend (loadUserRoleOnAppInit()).*/
   constructor(private readonly http: HttpClient) {
     console.log("AuthService: Constructor called.");
     const storedRole = localStorage.getItem('role');
@@ -60,6 +67,9 @@ export class AuthService { // <--- RENAMED FROM LoginService
     ).subscribe();
   }
 
+
+  /*Sends login credentials to the backend.
+If successful, saves the role and updates the state.*/
   login(payload: LoginRequestDto): Observable<ApiResponse<LoginResponseDto>> {
     console.log("AuthService: Attempting login for user.");
     return this.http.post<ApiResponse<LoginResponseDto>>(
@@ -86,6 +96,8 @@ export class AuthService { // <--- RENAMED FROM LoginService
     );
   }
 
+  /*Sends registration data to the backend.
+Logs success or failure.*/
   register(payload: CustomerRegisterRequestDto): Observable<ApiResponse<CustomerRegisterResponseDto>> {
     console.log("AuthService: Attempting registration for user.");
     return this.http.post<ApiResponse<CustomerRegisterResponseDto>>(
@@ -104,7 +116,9 @@ export class AuthService { // <--- RENAMED FROM LoginService
       })
     );
   }
-
+/*Sends a logout request to the backend.
+Clears local storage and resets user state.
+4. Get Role*/
   logout(): Observable<ApiResponse<string>> {
     console.log("AuthService: Attempting logout.");
     return this.http.post<ApiResponse<string>>(
@@ -131,6 +145,16 @@ export class AuthService { // <--- RENAMED FROM LoginService
     );
   }
 
+/*🔷 Utility Methods
+getCurrentUser(), getUserRole(), isLoggedIn()
+Return current user info or login status.
+saveRole(role: string)
+Saves role to localStorage and updates the state.
+clearUserSession()
+Clears user data from memory and storage.
+hasRole(role: string)
+Checks if the current user has a specific role.*/
+  
   getCurrentUser(): CurrentUser | null {
     const user = this.currentUserSubject.value;
     console.log("AuthService: getCurrentUser called. Current user:", user ? user.role : 'null');
@@ -150,6 +174,7 @@ export class AuthService { // <--- RENAMED FROM LoginService
     this.currentUserSubject.next({ role });
   }
 
+  /*Fetches the user's role from the backend.*/
   getRole(): Observable<ApiResponse<string>> {
     console.log("AuthService: Making API call to getRole.");
     return this.http.get<ApiResponse<string>>(
@@ -177,3 +202,8 @@ export class AuthService { // <--- RENAMED FROM LoginService
     return hasRole;
   }
 }
+/*Why This Code Is Important
+Centralized logic: All auth-related operations are in one place.
+Reactive design: Components can react to changes in auth state.
+Security: Manages session and role securely.
+Scalability: Easy to extend for more roles or permission*/
