@@ -1,3 +1,4 @@
+/*This component is responsible for managing the layout and behavior of the customer dashboard in your application. */
 import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
@@ -16,7 +17,9 @@ import { AuthService } from '../../features/auth/auth.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component.spec';
 import { MatDialog } from '@angular/material/dialog';
- 
+ /*selector: Used to include this component in HTML.
+standalone: true: This component doesn’t need to be declared in an Angular module.
+imports: Includes Angular Material modules and routing tools needed for layout and navigation.*/
 @Component({
   selector: 'app-customer-layout',
   standalone: true,
@@ -38,6 +41,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./customer-layout.component.css']
 })
 export class CustomerLayoutComponent implements OnInit, OnDestroy {
+  /*sidenav: Reference to the side navigation panel.
+mobileQuery: Used to detect screen size (mobile vs desktop).
+isSidenavOpened: Controls whether the side menu is open.
+userName, userProfilePicture, notificationsCount: Display user info and notifications.*/
   @ViewChild('sidenav') sidenav!: MatSidenav;
  
   mobileQuery: MediaQueryList;
@@ -50,7 +57,9 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
   notificationsCount: number = 2;
  
   private _mobileQueryListener: () => void;
- 
+
+  /*Sets up a listener to detect screen size changes.
+Automatically opens or closes the side menu based on screen size.*/
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
@@ -73,7 +82,11 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
     };
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
   }
- 
+
+
+  /*Initializes the layout based on screen size.
+Subscribes to customer profile data from the backend.
+Loads notification count.*/
   ngOnInit(): void {
     this.isSidenavOpened = !this.mobileQuery.matches;
  
@@ -92,7 +105,8 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
     });
     this.loadNotificationsCount();
   }
- 
+
+  /*Cleans up the screen size listener when the component is destroyed.*/
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
   }
@@ -104,7 +118,8 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
   loadNotificationsCount(): void {
     console.log('Fetching notifications count...');
   }
- 
+
+  /*Navigates to the customer profile page.*/
   onProfileClick(): void {
     console.log('Profile clicked: Navigating to user profile page.');
     this.router.navigate(['/customer/customer-profile']);
@@ -112,7 +127,13 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
       this.sidenav.close();
     }
   }
- 
+
+  /*Logs the user out:
+
+Calls authService.logout()
+Clears local storage
+Shows a snackbar message
+Redirects to login page*/
   onSignOut(): void {
     console.log('Logout clicked: Performing sign out...');
  
@@ -131,7 +152,10 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
       }
     });
   }
- 
+
+  /*If user confirms, calls customerService.deleteCustomer()
+Shows success or error message
+Redirects to home page*/
   onDeleteAccount(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent);
  
@@ -156,7 +180,7 @@ export class CustomerLayoutComponent implements OnInit, OnDestroy {
     });
   }
  
- 
+ /*Navigates to the notifications page.*/
   onBellIconClick(): void {
     console.log('Bell icon clicked: Navigating to notifications page.');
     this.router.navigate(['customer-notification'], { relativeTo: this.activatedRoute });
