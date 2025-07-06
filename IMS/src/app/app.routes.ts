@@ -1,3 +1,5 @@
+/*The app.routes.ts file is used to define and organize all the routes in your Angular application. 
+It helps Angular know which component to display when a user navigates to a specific URL.*/
 import { Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/login/login.component';
 
