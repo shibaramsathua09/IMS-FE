@@ -1,3 +1,16 @@
+/*The file app.config.ts is typically used in standalone 
+Angular applications to define the application-wide configuration. 
+It replaces some of the setup that used to be done in AppModule in traditional Angular apps.
+
+🧠 Purpose of app.config.ts
+It centralizes the configuration for things like:
+
+Routing (provideRouter)
+HTTP client setup (provideHttpClient)
+Interceptors (like JWT token handling)
+Change detection settings (provideZoneChangeDetection)
+Any other global providers your app needs
+*/
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
