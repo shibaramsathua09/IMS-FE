@@ -1,8 +1,18 @@
+<!--  Title-->
 <h2 mat-dialog-title>Confirm Rejection</h2>
 <mat-dialog-content>
   <p>Are you sure you want to perform this action? This action cannot be undone and the item will no longer be available for approval.</p>
+<!--   Message warning the user about the consequences. -->
 </mat-dialog-content>
+/*Two buttons:
+Cancel: Calls the cancel() method.
+Reject: Calls the confirm() method and is styled with a warning color (usually red).*/
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancel()">Cancel</button>
   <button mat-button color="warn" (click)="confirm()">Reject</button>
 </mat-dialog-actions>
+/*Angular Material, which is a UI component library for Angular applications. 
+It provides pre-built, styled components that follow Google's Material Design guidelines.
+mat-button is a directive that turns a regular HTML <button> into a
+  Material Design button with styling and behavior provided by Angular Material.
+*/
