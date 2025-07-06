@@ -1,7 +1,28 @@
+<!-- You're working with a customer dashboard layout in Angular using Angular Material.
+This layout includes a side navigation menu, a top toolbar, and dynamic content loading via routing. 
+
+4. Lifecycle Hooks
+ngOnInit(): Initializes layout and subscribes to customer profile.
+ngOnDestroy(): Removes screen size listener.
+5. Navigation Methods
+onProfileClick(): Navigates to profile page.
+onSignOut(): Logs out the user and redirects to login.
+onDeleteAccount(): Opens confirmation dialog and deletes account if confirmed.
+onBellIconClick(): Navigates to notifications page.
+🧃 What is MatSnackBar?
+MatSnackBar is a popup message component from Angular Material.
+
+🔹 Purpose:
+Show short messages to the user (e.g., success, error, info).
+Automatically disappears after a few seconds.
+this.snackBar.open('Logged out Successfully', 'Close', { duration: 3000 });
+Shows a message for 3 seconds with a "Close" button.
+-->
 <mat-sidenav-container
   class="dashboard-container"
   [hasBackdrop]="mobileQuery.matches"
 >
+<!--   This is the side menu that slides in from the left. -->
   <mat-sidenav
     #sidenav
     [mode]="mobileQuery.matches ? 'over' : 'side'"
