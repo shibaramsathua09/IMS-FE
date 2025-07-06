@@ -1,3 +1,4 @@
+//it is used for test cases
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
