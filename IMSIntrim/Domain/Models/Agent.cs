@@ -24,7 +24,7 @@ namespace IMSIntrim.Domain.Models
         /*Represents another one-to-many relationship: an agent can file multiple claims.
         Useful for tracking which claims were handled by which agent.*/
         public ICollection<Claim>? FiledClaims { get; set; }
-        /**/
+        /*Genericc collection of objects,,,,,,*/
 
         public ICollection<Notification>? Notifications { get; set; }
 
